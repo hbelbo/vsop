@@ -1,9 +1,9 @@
 ##### t03794
 #' Skogsavvirkning bruttoverdi t03794
 #'
-#' bruttoverdi per aar av toemmer, SSB tabell 03794
+#' bruttoverdi av tømmer (alt virke), pr år, fylke / kommune,
 #'
-#' Tabellen gir totalverdi av tømmer solgt per år og geografisk enhet, fra 1996 til 2018.
+#' totalverdi av tømmer solgt per år og geografisk enhet, fra 1996 - dd.
 #' Litt usikker om energivirkesortimenter og ved er med.
 #' https://www.ssb.no/statbank/list/skogav
 #'
@@ -11,10 +11,11 @@
 #'
 #' @return en tibble med hele datasetet.
 #' @export
+#' @source \url{https://www.ssb.no/statbank/table/03794/}
 #'
 #' @examples
 #'  t03794()
-t03794 <- function(region_level = 'fylke'){
+t03794 <- function(region_level = "fylke"){
 
   if (!(region_level %in% c("fylke", "kommune"))) {stop("warning: to get result, ret should be one of 'fylker', 'kommuner'" )}
   metadt <- PxWebApiData::ApiData("http://data.ssb.no/api/v0/no/table/03794", returnMetaData = TRUE)
@@ -178,7 +179,7 @@ t06216 <- function(){ # NB: avslutta, tidsserie 1996 - 2017
 ####### t03895
 #' Skogsavvirkning volum t03895
 #' Hogststatistikk for tømmer SSB tabell 03895
-#' 1996 - 2019
+#' 1996 - dd
 #'
 #' Tabellen gir avvirkningsvolum for salg, etter sortiment, kommune, år.
 #' Volum er avregningsvolum (m3pris)
