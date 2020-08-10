@@ -8,13 +8,12 @@ a bit more lagged publication. But longer history.
 https://www.ssb.no/statbank/list/skogav
 
 
-This package should ease the collection of these data into R. 
+Denne r-pakken gjør det enklere å hente statistikk for virkesomsetning fra
+SSB og landbruksdepartementet for bruk i R. Den har også funksjoner for å 
+reorganisere historisk regional statistikk til dagens fylkes- og kommunestruktur. 
 
 
-Load dependent packages: 
-
-
-Install package in R: 
+Installer vsop som pakke i R: 
 ```r
 devtools::install_git('https://github.com/hbelbo/vsop.git')
 ```
@@ -25,7 +24,7 @@ dplyr::glimpse(virkesverdi_kmn) # annual roundwood total value by municipality
 
 ```
 
-Demo of functions fetching logging statistics from statistics Norway (SSB)
+Demo av funksjoner som henter hogststatistikk fra statistisk sentralbyrå (SSB)
 ```r
 vsop::t03794(region_level = "fylke") %>% dplyr::glimpse # bruttoverdi per aar av toemmer
 vsop::t03895(region_level = "fylke") %>% dplyr::glimpse() # avvirkningsvolum for salg, per sortiment, kommune eller fylke, år.
