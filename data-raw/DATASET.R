@@ -255,8 +255,8 @@ virkesverdi_flk <-
     regionstat = t03794( region_level = "fylke")) %>%
   dplyr::select( -regrefrow)
 
-# virkesverdi_kmn based on ssb t12750
-sortimentpriser_kmn <-
+# sortimentpriser_flk based on ssb t12750
+sortimentpriser_flk <-
   regnavn.at.ref.yr(
     regionstat = t12750()) %>%
     dplyr::select( -regrefrow)
@@ -279,7 +279,7 @@ ld_avvirk_fylke <- function() {
   }
   return(df)
 }
-hogst_fylke_ld <- ld_avvirk_fylke()
+hogst_fylke_ld <- ld_avvirk_fylke() %>% mutate(region = KOMNR, aar = AVVIRKAAR)
 
 ld_avvirk_kommune <- function() {
   # kommunevise avvirkningsstatistikk fra landbruksdirektoratets excel-filer
@@ -297,13 +297,21 @@ ld_avvirk_kommune <- function() {
 }
 hogst_kommune_ld <- ld_avvirk_kommune()
 
+sortimentpriser_kmn_ldep <-   regnavn.at.ref.yr(
+  regionstat = (ld_avvirk_kommune() %>%
+  mutate(region_kode = KOMNR, aar = AVVIRKAAR))) %>%
+  dplyr::rename_with(tolower)
+
+
+
+
 # include the datasets in the package: usethis::use_data ----
 usethis::use_data(
   m3_sortiment_kmn,
   m3_sortiment_flk,
   virkesverdi_kmn,
   virkesverdi_flk,
-  sortimentpriser_kmn,
+  sortimentpriser_flk,
   regref_kommune,
   regref_fylke,
   regref_kommune_l,
@@ -311,5 +319,5 @@ usethis::use_data(
   kpi_t03014,
   hogst_fylke_ld,
   hogst_kommune_ld,
-
+  #sortimentpriser_kmn_ldep,
   overwrite = T)

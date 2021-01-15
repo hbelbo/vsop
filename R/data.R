@@ -1,4 +1,4 @@
-#' Regioninndeling kommunevis siden 1994
+#' @title Regioninndeling kommunevis siden 1994
 #'
 #' En tabell som viser endringer i kommunenes navn og nummer fra utgangspunkt
 #'  januar 1994 fram til naa. Tabellen kan benyttes sammen med
@@ -63,11 +63,13 @@
 #' @source \url{https://www.ssb.no/statbank/table/03895}
 "m3_sortiment_kmn"
 
+
 #' Brutto virkesverdi fordelt på fylke og år fra 1996
 #'
-#' Data fra SSB, tabell 03794: Bruttoverdi. Avvirkning for salg (1 000 kr) (K) 1996 - dd
+#' Data fra SSB, tabell 03794:
+#' Bruttoverdi. Avvirkning for salg (1 000 kr) (K) 1996 - dd
 #'
-#' @format data.frame med om lag 9542 obs og 7 variabler:
+#' @format data.frame med om lag 9542 obs og 7 variabler
 #' \describe{
 #'   \item{region}{Navn paa kommunen (paa hogsttidspunkt); chr "Hele landet" "Halden" ...}
 #'   \item{statistikkvariabel}{ ; chr "Bruttoverdi" "Bruttoverdi"}
@@ -81,6 +83,7 @@
 #' }
 #' @source \url{https://www.ssb.no/statbank/table/03794}
 "virkesverdi_flk"
+
 
 #' Brutto virkesverdi fordelt på kommune og år fra 1996
 #'
@@ -102,9 +105,10 @@
 "virkesverdi_kmn"
 
 
-#' Sortimentpriser fordelt på kommune og år fra 1996
+#' Sortimentpriser fordelt på fylke og år fra 2006
 #'
-#' Data fra SSB, tabell 12750: Bruttoverdi. A (K) 2006 - dd
+#' Data fra SSB, tabell 12750:
+#'     Gjennomsnittspris, etter sortiment (kr per m³) (F) 2006 - 2019
 #'
 #' @format data.frame med om lag 9542 obs og 7 variabler:
 #' \describe{
@@ -113,16 +117,17 @@
 #'   \item{statistikkvariabel}{ ; chr "Gjennomsnittspris" "Gjennomsnittspris"}
 #'   \item{år}{årstall ; chr "2006", "2007"}
 #'   \item{pris}{nok; int NA, 637, 465, ...}
-#'   \item{region_kode}{Kommunenummer paa registreringstidspkt: chr "0" "0101" "0102"}
+#'   \item{region_kode}{Fylkesnummer paa registreringstidspkt: chr "0" "01" "02"}
 #'   \item{treslag}{chr  "Gran"   "Furu"   "Lauv"   "Ukjent"}
 #'   \item{virkeskategori}{virkeskategori chr "1110" "1141" "1143" "1148" "1160" "1410" "1490" "2110" "2141" "2143" "2148" "2160" "2410" "2490" "3120" "3400" "3800" "1800"}
 #'   \item{sortimentgruppe}{sortimentgruppe chr "tømmer" "sams" "massevirke" "annet"}
-#'   \item{aar}{Aarstall; int "1996" "1997" ...}
-#'   \item{reg_n2020}{Regionnavn (kommunenavn) pr 2020 chr "Hele landet" "Halden" "Moss" "Sarpsborg" "Fredrikstad"}
-#'   \item{reg_k2020}{Regionkode (kommunekode) pr 2020}
+#'   \item{aar}{Aarstall; int "2006" "2007" ...}
+#'   \item{reg_n2020}{Regionnavn (fylkesnavn) pr 2020 chr "Hele landet" "Viken" "Trøndelag"}
+#'   \item{reg_k2020}{Regionkode (fylkeskode) pr 2020}
 #' }
 #' @source \url{https://www.ssb.no/statbank/table/12750}
-"sortimentpriser_kmn"
+"sortimentpriser_flk"
+
 
 
 
@@ -170,6 +175,34 @@
 #'   \item{M3PRIS}{kr pr m3; num 465 485 263 398 3 ...}
 #' }
 "hogst_kommune_ld"
+
+
+#' sortimentpriser per kommune, treslag, sortiment, år fra 2014
+#'
+#' Data aggregert fra Landbruksdirektoratets hogststatistikk
+#'
+#' @format tibble med om lag 20k obs og 13 variabler
+#' \describe{
+#'   \item{fylkenr}{Nr paa fylke (paa hogsttidspunkt); chr "01" "01" ...}
+#'   \item{fylkenavn}{; "Østfold" "Østfold" ...}
+#'   \item{komnr}{Nr paa kommune (på hogsttidspunkt); chr "0101" "0101" ...}
+#'   \item{komnavn}{; "HALDEN" "HALDEN" ...}
+#'   \item{avvirkaar}{årstall; num  2014 2014 2014 ...}
+#'   \item{sortkode}{Sortimentkode : chr "01" "01" "01" ...}
+#'   \item{sortiment}{Sortimentnavn: chr "Sagtømmer" "Sagtømmer" ... }
+#'   \item{virkesgrp}{Virkesgruppe; chr "1-Gran" "1-Gran" "2-Furu" "3-Lauv" "5-Ved" ... }
+#'   \item{virkeskat}{Virkeskategori; chr "1110" "1140" "1148" ...}
+#'   \item{kategoritekst}{sortimentgruppe chr "Gran spesial" "Gran sagtømmer sams" }
+#'   \item{totalvolum}{m3; num 3440 14215 ...}
+#'   \item{totalverdi}{kr; num 1599470 6898324 703000 ...}
+#'   \item{m3pris}{kr pr m3; num 465 485 263 398 3 ...}
+#'   \item{region_kode}{regionkode på registrerintgstidspkt : chr "0101" "0101" ...}
+#'   \item{aar}{årstall; num  2014 2014 2014 ..... }
+#'   \item{regrefrow}{Rad i regionreftabellen hvor nyt og gammel regionkode korresponderer: int 3489 1421...}
+#'   \item{reg_n202x}{Regionnavn pr dagens årstall chr "Halden", "Halden" }
+#'   \item{reg_k202x}{Regionkode pr dagens årstall chr "Halden", "Halden" }
+#' }
+NULL #"sortimentpriser_kmn_ldep"
 
 
 #' Konsumprisindeks
