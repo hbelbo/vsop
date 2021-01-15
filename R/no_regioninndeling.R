@@ -5,8 +5,11 @@
 #' og gjør om til riktige koder og navn for et gitt referanseår (ref.yr)
 #' Funksjonen fungerer for fylkesnivå inkludert landet ELLER for kommunenivå.
 #'
-#' @param regionstat is the regional statistics, where each obs represent one yar
+#' @param regionstat is the regional statistics, where each obs represent one year
 #' and one region (fylke eller kommune)
+#' The regionstat must have the variables
+#' "region_kode" (a Norwegian region code)
+#' "aar" (year of registration of the statistics)
 #' @param ref.yr is the reference year to which geographic name and code is to be used
 #'
 #' @return tibble having the regional statistics including the regional
