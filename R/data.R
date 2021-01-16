@@ -1,15 +1,14 @@
 #' @title Regioninndeling kommunevis siden 1994
 #'
-#' En tabell som viser endringer i kommunenes navn og nummer fra utgangspunkt
+#' @description En tabell som viser endringer i kommunenes navn og nummer fra utgangspunkt
 #'  januar 1994 fram til naa. Tabellen kan benyttes sammen med
-#'  SSB regional statistikk (paa kommunenivaa) for aa koble observasjoner fra
+#'  SSB regional statistikk (på kommunenivå) for aa koble observasjoner fra
 #'  tidligere aar til dagens kommunestruktur.
-#'  SSB info: https://www.ssb.no/klass/klassifikasjoner/131
 #'
 #'
 #' @format En tibble med 436 rader (436 kommuner i '94) og 26 variabler:
 #' \describe{
-#'   \item{reg_code_199401}{Regionkode januar 1994; chr "0101" "0104"...}
+#'   \item{\code{reg_code_199401}}{Regionkode januar 1994; chr "0101" "0104"...}
 #'   \item{reg_name_199401}{Regionnavn januar 1994; chr "Halden" "Moss" ...}
 #'   \item{reg_code_200201}{Regionkode januar 2002; chr "0101" "0104"...}
 #'   \item{reg_name_200201}{Regionnavn januar 2002; chr "Halden" "Moss" ...}
@@ -21,9 +20,9 @@
 
 
 
-#' Regioninndeling fylkesvis siden 1994
+#' @title Regioninndeling fylkesvis siden 1994
 #'
-#' En tabell som viser endringer i kommunenes navn og nummer fra utgangspunkt
+#' @description En tabell som viser endringer i kommunenes navn og nummer fra utgangspunkt
 #'  januar 1994 fram til nå. Tabellen kan benyttes sammen med
 #'  SSB regional statistikk (paa kommunenivaa) for aa koble observasjoner fra
 #'  tidligere aar til dagens kommunestruktur.
@@ -42,9 +41,9 @@
 "regref_fylke"
 
 
-#' Hogstvolum fordelt paa kommune, sortiment, aar fra 1996 til 2019
+#' @title Hogstvolum fordelt paa kommune, sortiment, aar fra 1996 til 2019
 #'
-#' Data fra SSB at https://www.ssb.no/statbank/table/03895
+#' @description Data fra SSB at https://www.ssb.no/statbank/table/03895
 #'
 #' @format data.frame med om lag 172k obs og 11 variabler:
 #' \describe{
@@ -64,32 +63,32 @@
 "m3_sortiment_kmn"
 
 
-#' Brutto virkesverdi fordelt på fylke og år fra 1996
+#' @title Brutto virkesverdi fordelt på fylke og år fra 1996
 #'
-#' Data fra SSB, tabell 03794:
+#' @description Data fra SSB, tabell 03794:
 #' Bruttoverdi. Avvirkning for salg (1 000 kr) (K) 1996 - dd
 #'
 #' @format data.frame med om lag 9542 obs og 7 variabler
 #' \describe{
-#'   \item{region}{Navn paa kommunen (paa hogsttidspunkt); chr "Hele landet" "Halden" ...}
+#'   \item{\code{region}}{Navn paa kommunen (paa hogsttidspunkt); chr "Hele landet" "Halden" ...}
 #'   \item{statistikkvariabel}{ ; chr "Bruttoverdi" "Bruttoverdi"}
 #'   \item{år}{Aarstall; chr "1996" "1997" ...}
 #'   \item{bruttoverdi}{Brutto verdi av solgt industrivirke NOK: int 2709220 2877766 2608427 ...  }
 #'   \item{region_kode}{Regionkode <chr> "0101", "0101", }
 #'   \item{Tid}{samme som årstall, <chr> "1996", "1997", "1998",}
 #'   \item{aar}{Aarstall; int "1996" "1997" ...}
-#'   \item{reg_n2020}{Regionnavn (kommunenavn) pr 2020 chr "Hele landet" "Halden" "Moss" "Sarpsborg" "Fredrikstad"}
+#'   \item{\code{reg_n2020}}{Regionnavn (kommunenavn) pr 2020 chr "Hele landet" "Halden" "Moss" "Sarpsborg" "Fredrikstad"}
 #'   \item{reg_k2020}{Regionkode (kommunekode) pr 2020}
 #' }
 #' @source \url{https://www.ssb.no/statbank/table/03794}
 "virkesverdi_flk"
 
 
-#' Brutto virkesverdi fordelt på kommune og år fra 1996
+#' @title Brutto virkesverdi fordelt på kommune og år fra 1996
 #'
-#' Data fra SSB, tabell 03794: Bruttoverdi. Avvirkning for salg (1 000 kr) (K) 1996 - dd
+#' @description Data fra SSB, tabell 03794: Bruttoverdi. Avvirkning for salg (1 000 kr) (K) 1996 - dd
 #'
-#' @format data.frame med om lag 9542 obs og 7 variabler:
+#' @format dataframe med om lag 9542 obs og 7 variabler
 #' \describe{
 #'   \item{region}{Navn paa kommunen (paa hogsttidspunkt); chr "Hele landet" "Halden" ...}
 #'   \item{statistikkvariabel}{ ; chr "Bruttoverdi" "Bruttoverdi"}
@@ -105,12 +104,12 @@
 "virkesverdi_kmn"
 
 
-#' Sortimentpriser fordelt på fylke og år fra 2006
+#' @title Sortimentpriser fordelt på fylke og år fra 2006
 #'
-#' Data fra SSB, tabell 12750:
+#' @description Data fra SSB, tabell 12750:
 #'     Gjennomsnittspris, etter sortiment (kr per m³) (F) 2006 - 2019
 #'
-#' @format data.frame med om lag 9542 obs og 7 variabler:
+#' @format data.frame med om lag 9542 obs og 7 variabler
 #' \describe{
 #'   \item{region}{Navn paa kommunen (paa hogsttidspunkt); chr "Hele landet" "Halden" ...}
 #'   \item{kategoritekst}{Sortimentnavn; chr "Gran spesialtoemmer" "Furu sekunda sagtoemmer" ...}
@@ -131,9 +130,9 @@
 
 
 
-#' Hogststatistikk per fylke, sortiment, mnd, ... fra 2014
+#' @title Hogststatistikk per fylke, sortiment, mnd, ... fra 2014
 #'
-#' Data fra Landbruksdirektoratets hogststatistikk
+#' @description Data fra Landbruksdirektoratets hogststatistikk
 #'
 #' @format tibble med om lag 19k obs og 13 variabler
 #' \describe{
@@ -154,9 +153,9 @@
 "hogst_fylke_ld"
 
 
-#' Hogststatistikk per kommune, sortiment, år, ... fra 2014
+#' @title Hogststatistikk per kommune, sortiment, år, ... fra 2014
 #'
-#' Data fra Landbruksdirektoratets hogststatistikk
+#' @description Data fra Landbruksdirektoratets hogststatistikk
 #'
 #' @format tibble med om lag 20k obs og 13 variabler
 #' \describe{
@@ -177,9 +176,9 @@
 "hogst_kommune_ld"
 
 
-#' sortimentpriser per kommune, treslag, sortiment, år fra 2014
+#' @title sortimentpriser per kommune, treslag, sortiment, år fra 2014
 #'
-#' Data aggregert fra Landbruksdirektoratets hogststatistikk
+#' @description Data aggregert fra Landbruksdirektoratets hogststatistikk
 #'
 #' @format tibble med om lag 20k obs og 13 variabler
 #' \describe{
@@ -202,12 +201,12 @@
 #'   \item{reg_n202x}{Regionnavn pr dagens årstall chr "Halden", "Halden" }
 #'   \item{reg_k202x}{Regionkode pr dagens årstall chr "Halden", "Halden" }
 #' }
-NULL #"sortimentpriser_kmn_ldep"
+"sortimentpriser_kmn_ldep"
 
 
-#' Konsumprisindeks
+#' @title Konsumprisindeks
 #'
-#' Data fra ssb tabell 03014:
+#' @description Data fra ssb tabell 03014:
 #' Konsumprisindeks, etter konsumgruppe (2015=100) 1979 - 2019
 #' For konsumgrupp totalindeks
 #'
@@ -221,9 +220,9 @@ NULL #"sortimentpriser_kmn_ldep"
 
 
 
-#' Avvirkning pr sortiment pr fylke
+#' @title Avvirkning pr sortiment pr fylke
 #'
-#' m3 per sortiment pr flk per år,  basert på ssb tabell 03895
+#' @description m3 per sortiment pr flk per år,  basert på ssb tabell 03895
 #' Data fra SSB at https://www.ssb.no/statbank/table/03895
 #'
 #' @format data.frame med om lag 8244 obs og 13 variabler:
@@ -246,9 +245,9 @@ NULL #"sortimentpriser_kmn_ldep"
 "m3_sortiment_flk"
 
 
-#' Region referansetabell for fylker
+#' @title Region referansetabell for fylker
 #'
-#' Tabellen gjør det mulig å slå opp hva et fylkesnavn på et gitt tidspunkt
+#' @description Tabellen gjør det mulig å slå opp hva et fylkesnavn på et gitt tidspunkt
 #' tilsvarer i dagens fylkesstruktur.
 #'
 #' @format data frame med om lag 80 obs og 8 variabler:
@@ -266,9 +265,9 @@ NULL #"sortimentpriser_kmn_ldep"
 "regref_fylke_l"
 
 
-#' Region referansetabell for kommuner
+#' @title Region referansetabell for kommuner
 #'
-#' Tabellen gjør det mulig å slå opp hva et kommunenavn / kommunekode på
+#' @description Tabellen gjør det mulig å slå opp hva et kommunenavn / kommunekode på
 #' et gitt tidspunkt tilsvarer i dagens kommunestruktur.
 #'
 #'
