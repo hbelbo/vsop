@@ -255,11 +255,13 @@ virkesverdi_flk <-
     regionstat = t03794( region_level = "fylke")) %>%
   dplyr::select( -regrefrow)
 
-# sortimentpriser_flk based on ssb t12750
+# sortimentpriser_flk based on ssb t12750 ----
 sortimentpriser_flk <-
   regnavn.at.ref.yr(
     regionstat = t12750()) %>%
-    dplyr::select( -regrefrow)
+    dplyr::select( -regrefrow) %>%
+  dplyr::group_by(reg_n2021, reg_k2021, aar, sortimentgruppe, treslag) %>%
+  dplyr::summarise(pris = mean(pris))
 
 
 
@@ -279,7 +281,7 @@ ld_avvirk_fylke <- function() {
   }
   return(df)
 }
-hogst_fylke_ld <- ld_avvirk_fylke() %>% mutate(region = KOMNR, aar = AVVIRKAAR)
+hogst_fylke_ld <- ld_avvirk_fylke() %>% mutate(region = FYLKENR, aar = AVVIRKAAR)
 
 ld_avvirk_kommune <- function() {
   # kommunevise avvirkningsstatistikk fra landbruksdirektoratets excel-filer
@@ -300,7 +302,12 @@ hogst_kommune_ld <- ld_avvirk_kommune()
 sortimentpriser_kmn_ldep <-   regnavn.at.ref.yr(
   regionstat = (ld_avvirk_kommune() %>%
   mutate(region_kode = KOMNR, aar = AVVIRKAAR))) %>%
-  dplyr::rename_with(tolower)
+  dplyr::rename_with(tolower) %>%
+  dplyr::group_by(reg_n2021, reg_k2021, aar, sortkode, sortiment, virkesgrp, region_kode) %>%
+  dplyr::summarise(totalvolum = sum(totalvolum),
+                   totalverdi = sum(totalverdi),
+                   m3pris = totalverdi / totalvolum)
+
 
 
 
@@ -319,5 +326,6 @@ usethis::use_data(
   kpi_t03014,
   hogst_fylke_ld,
   hogst_kommune_ld,
-  #sortimentpriser_kmn_ldep,
-  overwrite = T)
+  sortimentpriser_kmn_ldep,
+  overwrite = T,
+  version = 3)
