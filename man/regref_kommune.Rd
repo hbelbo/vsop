@@ -7,7 +7,7 @@
 \format{
 En tibble med 436 rader (436 kommuner i '94) og 26 variabler:
 \describe{
-\item{reg_code_199401}{Regionkode januar 1994; chr "0101" "0104"...}
+\item{\code{reg_code_199401}}{Regionkode januar 1994; chr "0101" "0104"...}
 \item{reg_name_199401}{Regionnavn januar 1994; chr "Halden" "Moss" ...}
 \item{reg_code_200201}{Regionkode januar 2002; chr "0101" "0104"...}
 \item{reg_name_200201}{Regionnavn januar 2002; chr "Halden" "Moss" ...}
@@ -24,8 +24,7 @@ regref_kommune
 \description{
 En tabell som viser endringer i kommunenes navn og nummer fra utgangspunkt
 januar 1994 fram til naa. Tabellen kan benyttes sammen med
-SSB regional statistikk (paa kommunenivaa) for aa koble observasjoner fra
+SSB regional statistikk (på kommunenivå) for aa koble observasjoner fra
 tidligere aar til dagens kommunestruktur.
-SSB info: https://www.ssb.no/klass/klassifikasjoner/131
 }
 \keyword{datasets}

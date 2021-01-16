@@ -5,16 +5,16 @@
 \alias{virkesverdi_flk}
 \title{Brutto virkesverdi fordelt på fylke og år fra 1996}
 \format{
-data.frame med om lag 9542 obs og 7 variabler:
+data.frame med om lag 9542 obs og 7 variabler
 \describe{
-\item{region}{Navn paa kommunen (paa hogsttidspunkt); chr "Hele landet" "Halden" ...}
+\item{\code{region}}{Navn paa kommunen (paa hogsttidspunkt); chr "Hele landet" "Halden" ...}
 \item{statistikkvariabel}{ ; chr "Bruttoverdi" "Bruttoverdi"}
 \item{år}{Aarstall; chr "1996" "1997" ...}
 \item{bruttoverdi}{Brutto verdi av solgt industrivirke NOK: int 2709220 2877766 2608427 ...  }
 \item{region_kode}{Regionkode <chr> "0101", "0101", }
 \item{Tid}{samme som årstall, <chr> "1996", "1997", "1998",}
 \item{aar}{Aarstall; int "1996" "1997" ...}
-\item{reg_n2020}{Regionnavn (kommunenavn) pr 2020 chr "Hele landet" "Halden" "Moss" "Sarpsborg" "Fredrikstad"}
+\item{\code{reg_n2020}}{Regionnavn (kommunenavn) pr 2020 chr "Hele landet" "Halden" "Moss" "Sarpsborg" "Fredrikstad"}
 \item{reg_k2020}{Regionkode (kommunekode) pr 2020}
 }
 }
@@ -25,6 +25,7 @@ data.frame med om lag 9542 obs og 7 variabler:
 virkesverdi_flk
 }
 \description{
-Data fra SSB, tabell 03794: Bruttoverdi. Avvirkning for salg (1 000 kr) (K) 1996 - dd
+Data fra SSB, tabell 03794:
+Bruttoverdi. Avvirkning for salg (1 000 kr) (K) 1996 - dd
 }
 \keyword{datasets}

@@ -7,8 +7,11 @@
 regnavn.at.ref.yr(regionstat, ref.yr = lubridate::year(lubridate::now()))
 }
 \arguments{
-\item{regionstat}{is the regional statistics, where each obs represent one yar
-and one region (fylke eller kommune)}
+\item{regionstat}{is the regional statistics, where each obs represent one year
+and one region (fylke eller kommune)
+The regionstat must have the variables
+"region_kode" (a Norwegian region code)
+"aar" (year of registration of the statistics)}
 
 \item{ref.yr}{is the reference year to which geographic name and code is to be used}
 }

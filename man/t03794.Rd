@@ -3,6 +3,9 @@
 \name{t03794}
 \alias{t03794}
 \title{Skogsavvirkning bruttoverdi t03794}
+\source{
+\url{https://www.ssb.no/statbank/table/03794/}
+}
 \usage{
 t03794(region_level = "fylke")
 }
@@ -13,10 +16,10 @@ t03794(region_level = "fylke")
 en tibble med hele datasetet.
 }
 \description{
-bruttoverdi per aar av toemmer, SSB tabell 03794
+bruttoverdi av tømmer (alt virke), pr år, fylke / kommune,
 }
 \details{
-Tabellen gir totalverdi av tømmer solgt per år og geografisk enhet, fra 1996 til 2018.
+totalverdi av tømmer solgt per år og geografisk enhet, fra 1996 - dd.
 Litt usikker om energivirkesortimenter og ved er med.
 https://www.ssb.no/statbank/list/skogav
 }

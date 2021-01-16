@@ -4,7 +4,7 @@
 \alias{t03895}
 \title{Skogsavvirkning volum t03895
 Hogststatistikk for tømmer SSB tabell 03895
-1996 - 2019}
+1996 - dd}
 \usage{
 t03895(region_level = "fylke")
 }
