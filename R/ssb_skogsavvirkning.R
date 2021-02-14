@@ -1,16 +1,17 @@
 ##### t03794
 #' Skogsavvirkning bruttoverdi t03794
 #'
-#' bruttoverdi av tømmer (alt virke), pr år, fylke / kommune,
+#' gross value of roundwood, pr year, county / municipality,
 #'
-#' totalverdi av tømmer solgt per år og geografisk enhet, fra 1996 - dd.
-#' Litt usikker om energivirkesortimenter og ved er med.
+#' total value of all roundwood sold per year and geographical unit, 1996 - now.
+#' Not sure if energywood assortments and wood is included
 #' https://www.ssb.no/statbank/list/skogav
 #'
 #' @param region_level Select type oneof: "fylke", "kommune"
 #'
-#' @return en tibble med hele datasetet.
+#' @return a tibble with the entire dataset
 #' @export
+#' @importFrom rlang .data
 #' @source \url{https://www.ssb.no/statbank/table/03794/}
 #'
 #' @examples
@@ -37,22 +38,22 @@ t03794 <- function(region_level = "fylke"){
 
   regioner_utvalg <- # identify regions having volumes
     tibble::as_tibble(pxdt[[1]])  %>%
-    dplyr::rename( bruttoverdi = value) %>%
-    dplyr::group_by(region) %>%
-    dplyr::summarize( volumtot = sum(bruttoverdi, na.rm = T)) %>%
-    dplyr::filter( volumtot > 0) %>%
+    dplyr::rename( bruttoverdi = .data$value) %>%
+    dplyr::group_by(.data$region) %>%
+    dplyr::summarize( volumtot = sum(.data$bruttoverdi, na.rm = T)) %>%
+    dplyr::filter( .data$volumtot > 0) %>%
     dplyr::ungroup() %>%
-    dplyr::pull(region)
+    dplyr::pull(.data$region)
 
   ds <- tibble::as_tibble(pxdt[[2]]) %>%
-    dplyr::rename( region_kode = Region)
+    dplyr::rename( region_kode = .data$Region)
 
   bruttov <- tibble::as_tibble(pxdt[[1]])  %>%
 
-    dplyr::rename(  bruttoverdi = value) %>%
-    dplyr::bind_cols( (ds %>% dplyr::select( region_kode, Tid))) %>%
-    dplyr::filter( region %in% regioner_utvalg) %>%
-    dplyr::mutate( aar = as.integer(Tid))
+    dplyr::rename(  bruttoverdi = .data$value) %>%
+    dplyr::bind_cols( (ds %>% dplyr::select( .data$region_kode, .data$Tid))) %>%
+    dplyr::filter( .data$region %in% regioner_utvalg) %>%
+    dplyr::mutate( aar = as.integer(.data$Tid))
 
   return(bruttov)
 
@@ -63,11 +64,12 @@ t03794 <- function(region_level = "fylke"){
 #' prisstatistikk for virke fra SSB tabell 12750
 #'
 #' Tabellen gir snittpris per sortiment per fylke, fra 2006 til 2019.
-#' Virke blir klassifisert per treslag og sortimentgrupper (tømmmer, massevirke, sams, annet)
+#' Virke blir klassifisert per treslag og sortimentgrupper (skur, massevirke, sams, annet)
 #' https://www.ssb.no/statbank/list/skogav
 #'
 #' @return en tibble med hele datasetet.
 #' @export
+#' @importFrom rlang .data
 #'
 #' @examples
 #' t12750()
@@ -85,32 +87,32 @@ t12750 <- function(){
                     Treslag = T
   )
   regioner_utvalg <- tibble::as_tibble(pxdt[[2]])  %>%
-    dplyr::group_by(Region) %>% dplyr::summarize( harpris = sum(value, na.rm = T)) %>%
-    dplyr::filter( harpris > 0) %>%
-    dplyr::select( Region) %>% dplyr::pull()
+    dplyr::group_by(.data$Region) %>% dplyr::summarize( harpris = sum(.data$value, na.rm = T)) %>%
+    dplyr::filter( .data$harpris > 0)  %>%
+    dplyr::pull(.data$Region)
 
   ds <- tibble::as_tibble(pxdt[[2]]) %>%
-    dplyr::rename( region_kode = Region,  virkeskategori = Treslag, Pris = value) #Modding variable names
+    dplyr::rename( region_kode = .data$Region,  virkeskategori = .data$Treslag, Pris = .data$value) #Modding variable names
 
   priser <- tibble::as_tibble(pxdt[[1]])  %>%
-    dplyr::rename( kategoritekst = sortiment, pris = value) %>%
-    dplyr::bind_cols(., (ds %>% dplyr::select(region_kode, virkeskategori, Tid))) %>%
-    dplyr::filter(region_kode %in% regioner_utvalg)  %>%
+    dplyr::rename( kategoritekst = .data$sortiment, pris = .data$value) %>%
+    dplyr::bind_cols( (ds %>% dplyr::select(.data$region_kode, .data$virkeskategori, .data$Tid))) %>%
+    dplyr::filter(.data$region_kode %in% regioner_utvalg)  %>%
     dplyr::mutate(
            treslag = dplyr::case_when(
-             stringr::str_detect(kategoritekst, "Gran") ~ "Gran",
-             stringr::str_detect(kategoritekst, "Furu") ~ "Furu",
-             stringr::str_detect(kategoritekst, "Lauvtre") ~ "Lauv",
+             stringr::str_detect(.data$kategoritekst, "Gran") ~ "Gran",
+             stringr::str_detect(.data$kategoritekst, "Furu") ~ "Furu",
+             stringr::str_detect(.data$kategoritekst, "Lauvtre") ~ "Lauv",
              TRUE ~ "Ukjent"
            ),
            sortimentgruppe = dplyr::case_when(
-             (virkeskategori %in% c("1160", "2160") |
-               stringr::str_sub(virkeskategori, 1,2) %in% c("13", "23", "1160", "2160"))  ~ "sams",
-             stringr::str_sub(virkeskategori, 1,2) %in% c("11", "21", "31")  ~ "tømmer",
-             stringr::str_sub(virkeskategori, 1,2) %in% c("14", "24", "34") ~ "massevirke",
+             (.data$virkeskategori %in% c("1160", "2160") |
+               stringr::str_sub(.data$virkeskategori, 1,2) %in% c("13", "23", "1160", "2160"))  ~ "sams",
+             stringr::str_sub(.data$virkeskategori, 1,2) %in% c("11", "21", "31")  ~ "skur",
+             stringr::str_sub(.data$virkeskategori, 1,2) %in% c("14", "24", "34") ~ "massevirke",
              TRUE ~ "annet"
            ),
-           aar = as.integer(Tid)
+           aar = as.integer(.data$Tid)
            )
   return(priser)
 }
@@ -119,15 +121,16 @@ t12750 <- function(){
 
 ##### t06216
 #' Skogsavvirkning priser t06216
-#' prisstatistikk for tømmer SSB tabell 06216
+#' prisstatistikk for rundvirke SSB tabell 06216
 #'
-#' Tabellen gir snittpris per sortiment på fylkesnivå, fra 1996 til 2017.
-#' Virke blir også klassifisert på treslag og sortimentgrupper (tømmmer, massevirke, sams, annet)
+#' Tabellen gir snittpris per sortiment per fylke, fra 1996 til 2017.
+#' Virke blir også klassifisert etter treslag og sortimentgrupper (skur, massevirke, sams, annet)
 #' https://www.ssb.no/statbank/list/skogav#'
 #'
 #'
 #' @return en tibble med hele datasetet.
 #' @export
+#' @importFrom rlang .data
 #'
 #' @examples
 #' t06216()
@@ -144,53 +147,53 @@ t06216 <- function(){ # NB: avslutta, tidsserie 1996 - 2017
                     Tid = T,
                     Treslag = T   )
   regioner_utvalg <- tibble::as_tibble(pxdt[[2]])  %>%
-    dplyr::group_by(Region) %>% dplyr::summarize(., harpris = sum(value, na.rm = T)) %>%
-    dplyr::filter( harpris > 0) %>%
-    dplyr::pull( Region)
+    dplyr::group_by(.data$Region) %>% dplyr::summarize( harpris = sum(.data$value, na.rm = T)) %>%
+    dplyr::filter( .data$harpris > 0) %>%
+    dplyr::pull( .data$Region)
 
 
   priser <- tibble::as_tibble(pxdt[[1]])  %>%
-    dplyr::rename( kategoritekst = sortiment, pris = value)
+    dplyr::rename( kategoritekst = .data$sortiment, pris = .data$value)
 
   ds <- tibble::as_tibble(pxdt[[2]]) %>%
-    dplyr::rename( region_kode = Region, virkeskategori = Treslag, Pris = value) #Correcting missleading variable names
+    dplyr::rename( region_kode = .data$Region, virkeskategori = .data$Treslag, Pris = .data$value) #Correcting missleading variable names
 
   priser <-
-    priser %>% dplyr::bind_cols(., (ds %>% dplyr::select( region_kode, virkeskategori, Tid))) %>%
-    dplyr::filter( region_kode %in% regioner_utvalg)  %>%
+    priser %>% dplyr::bind_cols( (ds %>% dplyr::select( .data$region_kode, .data$virkeskategori, .data$Tid))) %>%
+    dplyr::filter( .data$region_kode %in% regioner_utvalg)  %>%
     dplyr::mutate( treslag = dplyr::case_when(
-                    stringr::str_detect(kategoritekst, "Gran") ~ "Gran",
-                    stringr::str_detect(kategoritekst, "Furu") ~ "Furu",
-                    stringr::str_detect(kategoritekst, "Lauvtre") ~ "Lauv",
+                    stringr::str_detect(.data$kategoritekst, "Gran") ~ "Gran",
+                    stringr::str_detect(.data$kategoritekst, "Furu") ~ "Furu",
+                    stringr::str_detect(.data$kategoritekst, "Lauvtre") ~ "Lauv",
                     TRUE ~ "Ukjent"
                   ),
                   sortimentgruppe = dplyr::case_when(
-                    (virkeskategori %in% c("1160", "2160") |
-                       stringr::str_sub(virkeskategori, 1,2) %in% c("13", "23", "1160", "2160"))  ~ "sams",
-                    stringr::str_sub(virkeskategori, 1,2) %in% c("11", "21", "31")  ~ "tømmer",
-                    stringr::str_sub(virkeskategori, 1,2) %in% c("14", "24", "34") ~ "massevirke",
+                    (.data$virkeskategori %in% c("1160", "2160") |
+                       stringr::str_sub(.data$virkeskategori, 1,2) %in% c("13", "23", "1160", "2160"))  ~ "sams",
+                    stringr::str_sub(.data$virkeskategori, 1,2) %in% c("11", "21", "31")  ~ "skur",
+                    stringr::str_sub(.data$virkeskategori, 1,2) %in% c("14", "24", "34") ~ "massevirke",
                     TRUE ~ "annet"
                   ),
-                  aar = as.integer(Tid)
+                  aar = as.integer(.data$Tid)
     )
   return(priser)
 }
 
 ####### t03895
 #' Skogsavvirkning volum t03895
-#' Hogststatistikk for tømmer SSB tabell 03895
+#' Hogststatistikk for rundvirke SSB tabell 03895
 #' 1996 - dd
 #'
-#' Tabellen gir avvirkningsvolum for salg, etter sortiment, kommune, år.
+#' Tabellen gir avvirkningsvolum for salg, etter sortiment, kommune, year.
 #' Volum er avregningsvolum (m3pris)
 #'
-#' @param region_level regionnivå; velg ett av landet, fylke or kommune
+#' @param region_level regionnivaa; velg ett av landet, fylke or kommune
 #'
 #' @return en tibble
 #' @export
-#'
+#' @importFrom rlang .data
 #' @examples
-#' t03895()
+#' t03895() %>% dplyr::glimpse()
 t03895 <- function(region_level = "fylke"){ # 1996 - dd
 
   if ( !(region_level %in% c("fylke", "kommune"))) { stop("warning: to get result, region_level should be one of 'fylker', 'kommune'" )}
@@ -212,35 +215,35 @@ t03895 <- function(region_level = "fylke"){ # 1996 - dd
 
   regioner_utvalg <-
     tibble::as_tibble(pxdt[[1]])  %>%
-    dplyr::rename( volum_m3pris = value) %>%
-    dplyr::group_by(region) %>%
-    dplyr::summarize( volumtot = sum(volum_m3pris, na.rm = T)) %>%
-    dplyr::filter( volumtot > 0) %>%
-    dplyr::pull( region)
+    dplyr::rename( volum_m3pris = .data$value) %>%
+    dplyr::group_by(.data$region) %>%
+    dplyr::summarize( volumtot = sum(.data$volum_m3pris, na.rm = T)) %>%
+    dplyr::filter( .data$volumtot > 0) %>%
+    dplyr::pull( .data$region)
 
   ds <- tibble::as_tibble(pxdt[[2]]) %>%
-    dplyr::rename( region_kode = Region,  virkeskategori = Treslag)
+    dplyr::rename( region_kode = .data$Region,  virkeskategori = .data$Treslag)
 
   volum <- tibble::as_tibble(pxdt[[1]])  %>%
 
-    dplyr::rename(  kategoritekst = sortiment, volum_m3pris = value) %>%
-    dplyr::bind_cols(., (ds %>% dplyr::select(., region_kode, virkeskategori, Tid))) %>%
-    dplyr::filter( region %in% regioner_utvalg) %>%
+    dplyr::rename(  kategoritekst = .data$sortiment, volum_m3pris = .data$value) %>%
+    dplyr::bind_cols( (ds %>% dplyr::select( .data$region_kode, .data$virkeskategori, .data$Tid))) %>%
+    dplyr::filter( .data$region %in% regioner_utvalg) %>%
     dplyr::mutate(
                   treslag = dplyr::case_when(
-                    stringr::str_detect(kategoritekst, "Gran") ~ "Gran",
-                    stringr::str_detect(kategoritekst, "Furu") ~ "Furu",
-                    stringr::str_detect(kategoritekst, "Lauvtre") ~ "Lauv",
+                    stringr::str_detect(.data$kategoritekst, "Gran") ~ "Gran",
+                    stringr::str_detect(.data$kategoritekst, "Furu") ~ "Furu",
+                    stringr::str_detect(.data$kategoritekst, "Lauvtre") ~ "Lauv",
                     TRUE ~ "Ukjent"
                   ),
                   sortimentgruppe = dplyr::case_when(
-                    (virkeskategori %in% c("1160", "2160") |
-                       stringr::str_sub(virkeskategori, 1,2) %in% c("13", "23", "1160", "2160"))  ~ "sams",
-                    stringr::str_sub(virkeskategori, 1,2) %in% c("11", "21", "31")  ~ "tømmer",
-                    stringr::str_sub(virkeskategori, 1,2) %in% c("14", "24", "34") ~ "massevirke",
+                    (.data$virkeskategori %in% c("1160", "2160") |
+                       stringr::str_sub(.data$virkeskategori, 1,2) %in% c("13", "23", "1160", "2160"))  ~ "sams",
+                    stringr::str_sub(.data$virkeskategori, 1,2) %in% c("11", "21", "31")  ~ "skur",
+                    stringr::str_sub(.data$virkeskategori, 1,2) %in% c("14", "24", "34") ~ "massevirke",
                     TRUE ~ "annet"
                   ),
-                  aar = as.integer(Tid)
+                  aar = as.integer(.data$Tid)
                   )
   return(volum)
 
