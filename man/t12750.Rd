@@ -12,7 +12,7 @@ en tibble med hele datasetet.
 }
 \description{
 Tabellen gir snittpris per sortiment per fylke, fra 2006 til 2019.
-Virke blir klassifisert per treslag og sortimentgrupper (tømmmer, massevirke, sams, annet)
+Virke blir klassifisert per treslag og sortimentgrupper (skur, massevirke, sams, annet)
 https://www.ssb.no/statbank/list/skogav
 }
 \examples{

@@ -13,14 +13,14 @@ t03794(region_level = "fylke")
 \item{region_level}{Select type oneof: "fylke", "kommune"}
 }
 \value{
-en tibble med hele datasetet.
+a tibble with the entire dataset
 }
 \description{
-bruttoverdi av tømmer (alt virke), pr år, fylke / kommune,
+gross value of roundwood, pr year, county / municipality,
 }
 \details{
-totalverdi av tømmer solgt per år og geografisk enhet, fra 1996 - dd.
-Litt usikker om energivirkesortimenter og ved er med.
+total value of all roundwood sold per year and geographical unit, 1996 - now.
+Not sure if energywood assortments and wood is included
 https://www.ssb.no/statbank/list/skogav
 }
 \examples{

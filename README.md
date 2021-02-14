@@ -26,7 +26,7 @@ dplyr::glimpse(virkesverdi_kmn) # annual roundwood total value by municipality
 
 Demo av funksjoner som henter hogststatistikk fra statistisk sentralbyrå (SSB)
 ```r
-vsop::t03794(region_level = "fylke") %>% dplyr::glimpse # bruttoverdi per aar av toemmer
+vsop::t03794(region_level = "fylke") %>% dplyr::glimpse() # bruttoverdi per aar av toemmer
 vsop::t03895(region_level = "fylke") %>% dplyr::glimpse() # avvirkningsvolum for salg, per sortiment, kommune eller fylke, år.
 vsop::t06216() %>% dplyr::glimpse() # snittpris per sortiment på fylkesnivå, fra 1996 til 2017
 vsop::t12750() %>% dplyr::glimpse()  # snittpris per sortiment per fylke
@@ -40,7 +40,7 @@ vsop::regnavn.at.ref.yr(
 
 # Bruttoverdi av alt virke per år pr kommune, med kommunenavn pr 2020  
 vsop::regnavn.at.ref.yr(
-  regionstat = vsop::t03794(region_level = "kommune"))%>% glimpse() 
+  regionstat = vsop::t03794(region_level = "kommune"))%>% dplyr::glimpse() 
 ```
 Demo of some functions: 
 ```r

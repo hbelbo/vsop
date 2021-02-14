@@ -3,21 +3,21 @@
 \name{t03895}
 \alias{t03895}
 \title{Skogsavvirkning volum t03895
-Hogststatistikk for tømmer SSB tabell 03895
+Hogststatistikk for rundvirke SSB tabell 03895
 1996 - dd}
 \usage{
 t03895(region_level = "fylke")
 }
 \arguments{
-\item{region_level}{regionnivå; velg ett av landet, fylke or kommune}
+\item{region_level}{regionnivaa; velg ett av landet, fylke or kommune}
 }
 \value{
 en tibble
 }
 \description{
-Tabellen gir avvirkningsvolum for salg, etter sortiment, kommune, år.
+Tabellen gir avvirkningsvolum for salg, etter sortiment, kommune, year.
 Volum er avregningsvolum (m3pris)
 }
 \examples{
-t03895()
+t03895() \%>\% dplyr::glimpse()
 }

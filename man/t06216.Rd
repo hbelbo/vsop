@@ -3,7 +3,7 @@
 \name{t06216}
 \alias{t06216}
 \title{Skogsavvirkning priser t06216
-prisstatistikk for tømmer SSB tabell 06216}
+prisstatistikk for rundvirke SSB tabell 06216}
 \usage{
 t06216()
 }
@@ -11,8 +11,8 @@ t06216()
 en tibble med hele datasetet.
 }
 \description{
-Tabellen gir snittpris per sortiment på fylkesnivå, fra 1996 til 2017.
-Virke blir også klassifisert på treslag og sortimentgrupper (tømmmer, massevirke, sams, annet)
+Tabellen gir snittpris per sortiment per fylke, fra 1996 til 2017.
+Virke blir også klassifisert etter treslag og sortimentgrupper (skur, massevirke, sams, annet)
 https://www.ssb.no/statbank/list/skogav#'
 }
 \examples{
