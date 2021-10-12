@@ -47,3 +47,12 @@ Demo of some functions:
 vsop::regnavn.at.ref.yr(regionstat = vsop::t12750()) -> fylke_priser
 vsop::regnavn.at.ref.yr(regionstat = vsop::t03895(geolevel =  "fylke")) -> fylke_volum
 ```
+
+Demo of landbruksdirektoratets dataset:
+```r
+vsop::sortimentpriser_fylke_ldep %>% group_by(aar) %>% summarise(volum = sum(totalvolum), verdi = sum(totalverdi)) %>% mutate(pris = verdi / volum) %>% tail(10)
+vsop::sortimentpriser_fylke_ldep %>% filter(aar > 2020) %>% glimpse()
+vsop::sortimentpriser_kmn_ldep %>% group_by(aar) %>% summarise(volum = sum(totalvolum), verdi = sum(totalverdi)) %>% mutate(pris = verdi / volum) %>% tail(10)
+vsop::sortimentpriser_kmn_ldep %>% filter(aar > 2020) %>% glimpse()
+vsop::hogst_fylke_ld %>% filter(aar > 2020) %>% glimpse()
+```
