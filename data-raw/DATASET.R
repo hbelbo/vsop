@@ -281,7 +281,23 @@ ld_avvirk_fylke <- function() {
   }
   return(df)
 }
-hogst_fylke_ld <- ld_avvirk_fylke() %>% mutate(region = FYLKENR, aar = AVVIRKAAR)
+hogst_fylke_ld <- ld_avvirk_fylke() %>%
+  mutate(region = FYLKENR, aar = AVVIRKAAR) %>%
+  mutate( TOTALVOLUM = as.numeric(TOTALVOLUM),
+          TOTALVERDI = as.numeric(TOTALVERDI),
+          M3PRIS = as.numeric(M3PRIS))
+
+sortimentpriser_fylke_ldep <-   regnavn.at.ref.yr(
+  regionstat = (ld_avvirk_fylke() %>%
+                  mutate(region_kode = FYLKENR, aar = AVVIRKAAR,
+                         TOTALVOLUM = as.numeric(TOTALVOLUM),
+                         TOTALVERDI = as.numeric(TOTALVERDI),
+                         M3PRIS = as.numeric(M3PRIS)))) %>%
+  dplyr::rename_with(tolower) %>%
+  dplyr::group_by(reg_n2021, reg_k2021, aar, sortkode, sortiment, virkesgrp, region_kode) %>%
+  dplyr::summarise(totalvolum = sum(totalvolum),
+                   totalverdi = sum(totalverdi),
+                   m3pris = totalverdi / totalvolum)
 
 ld_avvirk_kommune <- function() {
   # kommunevise avvirkningsstatistikk fra landbruksdirektoratets excel-filer
@@ -327,5 +343,6 @@ usethis::use_data(
   hogst_fylke_ld,
   hogst_kommune_ld,
   sortimentpriser_kmn_ldep,
+  sortimentpriser_fylke_ldep,
   overwrite = T,
   version = 3)

@@ -68,7 +68,8 @@
 #' @description Data fra SSB, tabell 03794:
 #' Bruttoverdi. Avvirkning for salg (1 000 kr) (K) 1996 - dd
 #'
-#' @format data.frame med om lag 9542 obs og 7 variabler
+#' @format data.frame:
+#'
 #' \describe{
 #'   \item{\code{region}}{Navn paa kommunen (paa hogsttidspunkt); chr "Hele landet" "Halden" ...}
 #'   \item{statistikkvariabel}{ ; chr "Bruttoverdi" "Bruttoverdi"}
@@ -152,6 +153,24 @@
 #' }
 "hogst_fylke_ld"
 
+#' @title sortimentpriser per fylke, treslag, sortiment, år fra 2014
+#'
+#' @description Data aggregert fra Landbruksdirektoratets hogststatistikk
+#'
+#' @format tibble med om lag 1300 obs og 10 variabler
+#' \describe{
+#'   \item{reg_n202x}{Regionnavn pr dagens årstall chr "Agder", "Agder" }
+#'   \item{reg_k202x}{Regionkode pr dagens årstall chr "42", "42" }
+#'   \item{aar}{årstall; num  2014 2014 2014 ...}
+#'   \item{sortkode}{Sortimentkode : chr "01" "01" "01" ...}
+#'   \item{sortiment}{Sortimentnavn: chr "Sagtømmer" "Sagtømmer" ... }
+#'   \item{virkesgrp}{Virkesgruppe; chr "1-Gran" "1-Gran" "2-Furu" "3-Lauv" "5-Ved" ... }
+#'   \item{totalvolum}{m3; num 3440 14215 ...}
+#'   \item{totalverdi}{kr; num 1599470 6898324 703000 ...}
+#'   \item{m3pris}{kr pr m3; num 465 485 263 398 3 ...}
+#' }
+"sortimentpriser_fylke_ldep"
+
 
 #' @title Hogststatistikk per kommune, sortiment, år, ... fra 2014
 #'
@@ -182,26 +201,19 @@
 #'
 #' @format tibble med om lag 20k obs og 13 variabler
 #' \describe{
-#'   \item{fylkenr}{Nr paa fylke (paa hogsttidspunkt); chr "01" "01" ...}
-#'   \item{fylkenavn}{; "Østfold" "Østfold" ...}
-#'   \item{komnr}{Nr paa kommune (på hogsttidspunkt); chr "0101" "0101" ...}
-#'   \item{komnavn}{; "HALDEN" "HALDEN" ...}
-#'   \item{avvirkaar}{årstall; num  2014 2014 2014 ...}
+#'   \item{reg_n202x}{Regionnavn pr dagens årstall chr "Halden", "Halden" }
+#'   \item{reg_k202x}{Regionkode pr dagens årstall chr "Halden", "Halden" }
+#'   \item{aar}{årstall; num  2014 2014 2014 ...}
 #'   \item{sortkode}{Sortimentkode : chr "01" "01" "01" ...}
 #'   \item{sortiment}{Sortimentnavn: chr "Sagtømmer" "Sagtømmer" ... }
 #'   \item{virkesgrp}{Virkesgruppe; chr "1-Gran" "1-Gran" "2-Furu" "3-Lauv" "5-Ved" ... }
-#'   \item{virkeskat}{Virkeskategori; chr "1110" "1140" "1148" ...}
-#'   \item{kategoritekst}{sortimentgruppe chr "Gran spesial" "Gran sagtømmer sams" }
 #'   \item{totalvolum}{m3; num 3440 14215 ...}
 #'   \item{totalverdi}{kr; num 1599470 6898324 703000 ...}
 #'   \item{m3pris}{kr pr m3; num 465 485 263 398 3 ...}
-#'   \item{region_kode}{regionkode på registrerintgstidspkt : chr "0101" "0101" ...}
-#'   \item{aar}{årstall; num  2014 2014 2014 ..... }
-#'   \item{regrefrow}{Rad i regionreftabellen hvor nyt og gammel regionkode korresponderer: int 3489 1421...}
-#'   \item{reg_n202x}{Regionnavn pr dagens årstall chr "Halden", "Halden" }
-#'   \item{reg_k202x}{Regionkode pr dagens årstall chr "Halden", "Halden" }
 #' }
 "sortimentpriser_kmn_ldep"
+
+
 
 
 #' @title Konsumprisindeks

@@ -5,7 +5,8 @@
 \alias{virkesverdi_flk}
 \title{Brutto virkesverdi fordelt på fylke og år fra 1996}
 \format{
-data.frame med om lag 9542 obs og 7 variabler
+data.frame:
+
 \describe{
 \item{\code{region}}{Navn paa kommunen (paa hogsttidspunkt); chr "Hele landet" "Halden" ...}
 \item{statistikkvariabel}{ ; chr "Bruttoverdi" "Bruttoverdi"}
