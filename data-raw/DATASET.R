@@ -286,6 +286,8 @@ hogst_fylke_ld <- ld_avvirk_fylke() %>%
   mutate( TOTALVOLUM = as.numeric(TOTALVOLUM),
           TOTALVERDI = as.numeric(TOTALVERDI),
           M3PRIS = as.numeric(M3PRIS))
+usethis::use_data(hogst_fylke_ld, overwrite = T, version = 3)
+
 
 sortimentpriser_fylke_ldep <-   regnavn.at.ref.yr(
   regionstat = (ld_avvirk_fylke() %>%
@@ -298,6 +300,8 @@ sortimentpriser_fylke_ldep <-   regnavn.at.ref.yr(
   dplyr::summarise(totalvolum = sum(totalvolum),
                    totalverdi = sum(totalverdi),
                    m3pris = totalverdi / totalvolum)
+usethis::use_data( sortimentpriser_fylke_ldep, overwrite = T, version = 3)
+
 
 ld_avvirk_kommune <- function() {
   # kommunevise avvirkningsstatistikk fra landbruksdirektoratets excel-filer
@@ -314,6 +318,7 @@ ld_avvirk_kommune <- function() {
   return(df)
 }
 hogst_kommune_ld <- ld_avvirk_kommune()
+usethis::use_data(hogst_kommune_ld, overwrite = T, version = 3)
 
 sortimentpriser_kmn_ldep <-   regnavn.at.ref.yr(
   regionstat = (ld_avvirk_kommune() %>%
@@ -323,7 +328,7 @@ sortimentpriser_kmn_ldep <-   regnavn.at.ref.yr(
   dplyr::summarise(totalvolum = sum(totalvolum),
                    totalverdi = sum(totalverdi),
                    m3pris = totalverdi / totalvolum)
-
+usethis::use_data(sortimentpriser_kmn_ldep, overwrite = T, version = 3)
 
 
 
@@ -340,9 +345,5 @@ usethis::use_data(
   regref_kommune_l,
   regref_fylke_l,
   kpi_t03014,
-  hogst_fylke_ld,
-  hogst_kommune_ld,
-  sortimentpriser_kmn_ldep,
-  sortimentpriser_fylke_ldep,
   overwrite = T,
   version = 3)
