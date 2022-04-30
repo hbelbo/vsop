@@ -17,8 +17,8 @@ data.frame med om lag 9542 obs og 7 variabler
 \item{virkeskategori}{virkeskategori chr "1110" "1141" "1143" "1148" "1160" "1410" "1490" "2110" "2141" "2143" "2148" "2160" "2410" "2490" "3120" "3400" "3800" "1800"}
 \item{sortimentgruppe}{sortimentgruppe chr "tømmer" "sams" "massevirke" "annet"}
 \item{aar}{Aarstall; int "2006" "2007" ...}
-\item{reg_n2020}{Regionnavn (fylkesnavn) pr 2020 chr "Hele landet" "Viken" "Trøndelag"}
-\item{reg_k2020}{Regionkode (fylkeskode) pr 2020}
+\item{reg_n20xx}{Regionnavn (fylkesnavn) pr år 20xx chr "Hele landet" "Viken" "Trøndelag"}
+\item{reg_k20xx}{Regionkode (fylkeskode) pr år 20xx}
 }
 }
 \source{

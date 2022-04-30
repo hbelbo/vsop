@@ -18,26 +18,23 @@ ld_avvirk_fylke <- function() {
   }
   return(df)
 }
-hogst_fylke_ld <- ld_avvirk_fylke() %>%
-  mutate(region = FYLKENR, aar = AVVIRKAAR) %>%
-  mutate( TOTALVOLUM = as.numeric(TOTALVOLUM),
-          TOTALVERDI = as.numeric(TOTALVERDI),
-          M3PRIS = as.numeric(M3PRIS))
-usethis::use_data(hogst_fylke_ld, overwrite = T, version = 3)
 
 
-sortimentpriser_fylke_ldep <-   regnavn.at.ref.yr(
-  regionstat = (ld_avvirk_fylke() %>%
+
+  avvirk_fylke_ldir <- regnavn.at.ref.yr(
+    (ld_avvirk_fylke() %>%
                   mutate(region_kode = FYLKENR, aar = AVVIRKAAR,
                          TOTALVOLUM = as.numeric(TOTALVOLUM),
                          TOTALVERDI = as.numeric(TOTALVERDI),
-                         M3PRIS = as.numeric(M3PRIS)))) %>%
-  dplyr::rename_with(tolower) %>%
-  dplyr::group_by(reg_n2021, reg_k2021, aar, sortkode, sortiment, virkesgrp, region_kode) %>%
-  dplyr::summarise(totalvolum = sum(totalvolum),
+                         M3PRIS = as.numeric(M3PRIS))) %>%
+  dplyr::rename_with(tolower) ) %>%
+    dplyr::group_by_at(vars(starts_with("reg_"), aar, sortkode, sortiment, virkesgrp, virkeskat, kategoritekst))  %>%
+    dplyr::summarise(totalvolum = sum(totalvolum),
                    totalverdi = sum(totalverdi),
-                   m3pris = totalverdi / totalvolum)
-usethis::use_data( sortimentpriser_fylke_ldep, overwrite = T, version = 3)
+                   m3pris = totalverdi / totalvolum,
+                   region_kode = paste0(unique(region_kode), collapse = ", ")) %>%
+    dplyr::ungroup()
+usethis::use_data( avvirk_fylke_ldir, overwrite = T, version = 3)
 
 
 ld_avvirk_kommune <- function() {
@@ -54,16 +51,16 @@ ld_avvirk_kommune <- function() {
   }
   return(df)
 }
-hogst_kommune_ld <- ld_avvirk_kommune()
-usethis::use_data(hogst_kommune_ld, overwrite = T, version = 3)
 
-sortimentpriser_kmn_ldep <-   regnavn.at.ref.yr(
+avvirk_kmn_ldir <-   regnavn.at.ref.yr(
   regionstat = (ld_avvirk_kommune() %>%
                   mutate(region_kode = KOMNR, aar = AVVIRKAAR))) %>%
   dplyr::rename_with(tolower) %>%
-  dplyr::group_by(reg_n2021, reg_k2021, aar, sortkode, sortiment, virkesgrp, region_kode) %>%
+  dplyr::group_by_at(vars(starts_with("reg_"), aar, sortkode, sortiment, virkesgrp, virkeskat, kategoritekst)) %>%
   dplyr::summarise(totalvolum = sum(totalvolum),
                    totalverdi = sum(totalverdi),
-                   m3pris = totalverdi / totalvolum)
-usethis::use_data(sortimentpriser_kmn_ldep, overwrite = T, version = 3)
+                   m3pris = totalverdi / totalvolum,
+                   region_kode = paste0(unique(region_kode), collapse = ", ")) %>%
+  dplyr::ungroup()
+usethis::use_data(avvirk_kmn_ldir, overwrite = T, version = 3)
 

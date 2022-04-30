@@ -12,8 +12,8 @@
 #'   \item{reg_name_199401}{Regionnavn januar 1994; chr "Halden" "Moss" ...}
 #'   \item{reg_code_200201}{Regionkode januar 2002; chr "0101" "0104"...}
 #'   \item{reg_name_200201}{Regionnavn januar 2002; chr "Halden" "Moss" ...}
-#'   \item{...code...}{fortsetter paa samme vis til 2020}
-#'   \item{...name...}{fortsetter paa samme vis til 2020}
+#'   \item{...code...}{fortsetter paa samme vis til 20xx}
+#'   \item{...name...}{fortsetter paa samme vis til 20xx}
 #' }
 #' @source \url{https://www.ssb.no/klass/klassifikasjoner/131/versjoner}
 "regref_kommune"
@@ -34,8 +34,8 @@
 #'   \item{reg_name_199401}{Regionnavn januar 1994; chr "Oestfold" "Akershus" ..}
 #'   \item{reg_code_200607}{Regionkode juli 2006; chr "01" "02"...}
 #'   \item{reg_name_200607}{Regionnavn juli 2006; chr "Oestfold" "Akershus" ...}
-#'   \item{...code...}{fortsetter paa samme vis til 2020}
-#'   \item{...name...}{fortsetter paa samme vis til 2020}
+#'   \item{...code...}{fortsetter paa samme vis til 20xx}
+#'   \item{...name...}{fortsetter paa samme vis til 20xx}
 #' }
 #' @source \url{https://www.ssb.no/klass/klassifikasjoner/127/versjoner}
 "regref_fylke"
@@ -56,8 +56,8 @@
 #'   \item{virkeskategori}{virkeskategori chr "1110" "1141" "1143" "1148" "1160" "1410" "1490" "2110" "2141" "2143" "2148" "2160" "2410" "2490" "3120" "3400" "3800" "1800"}
 #'   \item{treslag}{chr  "Gran"   "Furu"   "Lauv"   "Ukjent"}
 #'   \item{sortimentgruppe}{sortimentgruppe chr "toemmer" "sams" "massevirke" "annet"}
-#'   \item{reg_n2020}{Regionnavn pr 2020 chr "Hele landet" "Halden" "Moss" "Sarpsborg" "Fredrikstad"}
-#'   \item{reg_k2020}{Regionkode pr 2020 chr "0301" "1101" "1103" "1106" "1108" "1111" "1112" "1114"}
+#'   \item{reg_n20xx}{Regionnavn pr 20xx chr "Hele landet" "Halden" "Moss" "Sarpsborg" "Fredrikstad"}
+#'   \item{reg_k20xx}{Regionkode pr 20xx chr "0301" "1101" "1103" "1106" "1108" "1111" "1112" "1114"}
 #' }
 #' @source \url{https://www.ssb.no/statbank/table/03895}
 "m3_sortiment_kmn"
@@ -69,7 +69,6 @@
 #' Bruttoverdi. Avvirkning for salg (1 000 kr) (K) 1996 - dd
 #'
 #' @format data.frame:
-#'
 #' \describe{
 #'   \item{\code{region}}{Navn paa kommunen (paa hogsttidspunkt); chr "Hele landet" "Halden" ...}
 #'   \item{statistikkvariabel}{ ; chr "Bruttoverdi" "Bruttoverdi"}
@@ -78,8 +77,8 @@
 #'   \item{region_kode}{Regionkode <chr> "0101", "0101", }
 #'   \item{Tid}{samme som årstall, <chr> "1996", "1997", "1998",}
 #'   \item{aar}{Aarstall; int "1996" "1997" ...}
-#'   \item{\code{reg_n2020}}{Regionnavn (kommunenavn) pr 2020 chr "Hele landet" "Halden" "Moss" "Sarpsborg" "Fredrikstad"}
-#'   \item{reg_k2020}{Regionkode (kommunekode) pr 2020}
+#'   \item{\code{reg_n20xx}}{Regionnavn (kommunenavn) pr 20xx chr "Hele landet" "Halden" "Moss" "Sarpsborg" "Fredrikstad"}
+#'   \item{reg_k20xx}{Regionkode (kommunekode) pr 20xx}
 #' }
 #' @source \url{https://www.ssb.no/statbank/table/03794}
 "virkesverdi_flk"
@@ -98,8 +97,8 @@
 #'   \item{region_kode}{Regionkode <chr> "0101", "0101", }
 #'   \item{Tid}{samme som årstall, <chr> "1996", "1997", "1998",}
 #'   \item{aar}{Aarstall; int "1996" "1997" ...}
-#'   \item{reg_n2020}{Regionnavn (kommunenavn) pr 2020 chr "Hele landet" "Halden" "Moss" "Sarpsborg" "Fredrikstad"}
-#'   \item{reg_k2020}{Regionkode (kommunekode) pr 2020}
+#'   \item{reg_n20xx}{Regionnavn (kommunenavn) pr 20xx chr "Hele landet" "Halden" "Moss" "Sarpsborg" "Fredrikstad"}
+#'   \item{reg_k20xx}{Regionkode (kommunekode) pr 20xx}
 #' }
 #' @source \url{https://www.ssb.no/statbank/table/03794}
 "virkesverdi_kmn"
@@ -122,8 +121,8 @@
 #'   \item{virkeskategori}{virkeskategori chr "1110" "1141" "1143" "1148" "1160" "1410" "1490" "2110" "2141" "2143" "2148" "2160" "2410" "2490" "3120" "3400" "3800" "1800"}
 #'   \item{sortimentgruppe}{sortimentgruppe chr "tømmer" "sams" "massevirke" "annet"}
 #'   \item{aar}{Aarstall; int "2006" "2007" ...}
-#'   \item{reg_n2020}{Regionnavn (fylkesnavn) pr 2020 chr "Hele landet" "Viken" "Trøndelag"}
-#'   \item{reg_k2020}{Regionkode (fylkeskode) pr 2020}
+#'   \item{reg_n20xx}{Regionnavn (fylkesnavn) pr år 20xx chr "Hele landet" "Viken" "Trøndelag"}
+#'   \item{reg_k20xx}{Regionkode (fylkeskode) pr år 20xx}
 #' }
 #' @source \url{https://www.ssb.no/statbank/table/12750}
 "sortimentpriser_flk"
@@ -131,31 +130,10 @@
 
 
 
-#' @title Hogststatistikk per fylke, sortiment, mnd, ... fra 2014
+
+#' @title volum og priser per kommune, treslag, sortiment, år fra 2014
 #'
 #' @description Data fra Landbruksdirektoratets hogststatistikk
-#'
-#' @format tibble med om lag 19k obs og 13 variabler
-#' \describe{
-#'   \item{FYLKENR }{Nr paa fylke (paa hogsttidspunkt); chr "01" "01" ...}
-#'   \item{FYLKENAVN}{; "Østfold" "Østfold" ...}
-#'   \item{AVVIRKAAR}{årstall; num  2014 2014 2014 ...}
-#'   \item{KVARTAL}{kvartal; num 1 1 1 ...}
-#'   \item{AVVIRKMND}{Aarstall; num 1 1 1 ...}
-#'   \item{SORTKODE}{Sortimentkode : chr "01" "01" "01" ...}
-#'   \item{SORTIMENT}{Sortimentnavn: chr "Sagtømmer" "Sagtømmer" ... }
-#'   \item{VIRKESGRP}{Virkesgruppe; chr "1-Gran" "1-Gran" "2-Furu" "3-Lauv" "5-Ved" ... }
-#'   \item{VIRKESKAT}{Virkeskategori; chr "1110" "1140" "1148" ...}
-#'   \item{KATEGORITEKST}{sortimentgruppe chr "Gran spesial" "Gran sagtømmer sams" }
-#'   \item{TOTALVOLUM}{m3; num 3440 14215 ...}
-#'   \item{TOTALVERDI}{kr; num 1599470 6898324 703000 ...}
-#'   \item{M3PRIS}{kr pr m3; num 465 485 263 398 3 ...}
-#' }
-"hogst_fylke_ld"
-
-#' @title sortimentpriser per fylke, treslag, sortiment, år fra 2014
-#'
-#' @description Data aggregert fra Landbruksdirektoratets hogststatistikk
 #'
 #' @format tibble med om lag 1300 obs og 10 variabler
 #' \describe{
@@ -165,39 +143,22 @@
 #'   \item{sortkode}{Sortimentkode : chr "01" "01" "01" ...}
 #'   \item{sortiment}{Sortimentnavn: chr "Sagtømmer" "Sagtømmer" ... }
 #'   \item{virkesgrp}{Virkesgruppe; chr "1-Gran" "1-Gran" "2-Furu" "3-Lauv" "5-Ved" ... }
+#'   \item{virkeskat}{Virkeskat; chr "1140" "1148" "1410" ... }
+#'   \item{kategoritekst}{Kategoritekst; chr "Gran sagtømmer sams" "Gran annet sagtømmer" "Gran massevirke" ... }
 #'   \item{totalvolum}{m3; num 3440 14215 ...}
 #'   \item{totalverdi}{kr; num 1599470 6898324 703000 ...}
 #'   \item{m3pris}{kr pr m3; num 465 485 263 398 3 ...}
+#'   \item{region_kode}{kode; chr 09, 10 09, 10 09, 10 09,  ...}
 #' }
-"sortimentpriser_fylke_ldep"
+"avvirk_fylke_ldir"
 
 
-#' @title Hogststatistikk per kommune, sortiment, år, ... fra 2014
+
+
+
+#' @title volum og priser per kommune, treslag, sortiment, år fra 2014
 #'
 #' @description Data fra Landbruksdirektoratets hogststatistikk
-#'
-#' @format tibble med om lag 20k obs og 13 variabler
-#' \describe{
-#'   \item{FYLKENR }{Nr paa fylke (paa hogsttidspunkt); chr "01" "01" ...}
-#'   \item{FYLKENAVN}{; "Østfold" "Østfold" ...}
-#'   \item{KOMNR}{Nr paa kommune (på hogsttidspunkt); chr "0101" "0101" ...}
-#'   \item{KOMNAVN}{; "HALDEN" "HALDEN" ...}
-#'   \item{AVVIRKAAR}{årstall; num  2014 2014 2014 ...}
-#'   \item{SORTKODE}{Sortimentkode : chr "01" "01" "01" ...}
-#'   \item{SORTIMENT}{Sortimentnavn: chr "Sagtømmer" "Sagtømmer" ... }
-#'   \item{VIRKESGRP}{Virkesgruppe; chr "1-Gran" "1-Gran" "2-Furu" "3-Lauv" "5-Ved" ... }
-#'   \item{VIRKESKAT}{Virkeskategori; chr "1110" "1140" "1148" ...}
-#'   \item{KATEGORITEKST}{sortimentgruppe chr "Gran spesial" "Gran sagtømmer sams" }
-#'   \item{TOTALVOLUM}{m3; num 3440 14215 ...}
-#'   \item{TOTALVERDI}{kr; num 1599470 6898324 703000 ...}
-#'   \item{M3PRIS}{kr pr m3; num 465 485 263 398 3 ...}
-#' }
-"hogst_kommune_ld"
-
-
-#' @title sortimentpriser per kommune, treslag, sortiment, år fra 2014
-#'
-#' @description Data aggregert fra Landbruksdirektoratets hogststatistikk
 #'
 #' @format tibble med om lag 20k obs og 13 variabler
 #' \describe{
@@ -207,11 +168,14 @@
 #'   \item{sortkode}{Sortimentkode : chr "01" "01" "01" ...}
 #'   \item{sortiment}{Sortimentnavn: chr "Sagtømmer" "Sagtømmer" ... }
 #'   \item{virkesgrp}{Virkesgruppe; chr "1-Gran" "1-Gran" "2-Furu" "3-Lauv" "5-Ved" ... }
+#'   \item{virkeskat}{Virkeskat; chr "1140" "1148" "1410" ... }
+#'   \item{kategoritekst}{Kategoritekst; chr "Gran sagtømmer sams" "Gran annet sagtømmer" "Gran massevirke" ... }
 #'   \item{totalvolum}{m3; num 3440 14215 ...}
 #'   \item{totalverdi}{kr; num 1599470 6898324 703000 ...}
 #'   \item{m3pris}{kr pr m3; num 465 485 263 398 3 ...}
+#'   \item{region_kode}{kode; chr 1820, 1820, 1820, 1820,  ...}
 #' }
-"sortimentpriser_kmn_ldep"
+"avvirk_kmn_ldir"
 
 
 
@@ -250,8 +214,8 @@
 #'   \item{treslag}{chr  "Gran"   "Furu"   "Lauv"   "Ukjent"}#'
 #'   \item{sortimentgruppe}{sortimentgruppe chr "toemmer" "sams" "massevirke" "annet"}
 #'   \item{aar}{Aarstall; int 1996 1997 ...}
-#'   \item{reg_n2020}{Regionnavn pr 2020 chr "Hele landet" "Halden" "Moss" "Sarpsborg" "Fredrikstad"}
-#'   \item{reg_k2020}{Regionkode pr 2020 chr "0301" "1101" "1103" "1106" "1108" "1111" "1112" "1114"}
+#'   \item{reg_n20xx}{Regionnavn pr 20xx chr "Hele landet" "Halden" "Moss" "Sarpsborg" "Fredrikstad"}
+#'   \item{reg_k20xx}{Regionkode pr 20xx chr "0301" "1101" "1103" "1106" "1108" "1111" "1112" "1114"}
 #' }
 #' @source \url{https://www.ssb.no/statbank/table/03895}
 "m3_sortiment_flk"

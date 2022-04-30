@@ -11,8 +11,8 @@ En tibble med 20 rader (20 fylker i '94) og 8 variabler:
 \item{reg_name_199401}{Regionnavn januar 1994; chr "Oestfold" "Akershus" ..}
 \item{reg_code_200607}{Regionkode juli 2006; chr "01" "02"...}
 \item{reg_name_200607}{Regionnavn juli 2006; chr "Oestfold" "Akershus" ...}
-\item{...code...}{fortsetter paa samme vis til 2020}
-\item{...name...}{fortsetter paa samme vis til 2020}
+\item{...code...}{fortsetter paa samme vis til 20xx}
+\item{...name...}{fortsetter paa samme vis til 20xx}
 }
 }
 \source{

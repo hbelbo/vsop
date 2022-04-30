@@ -18,8 +18,8 @@ data.frame med om lag 8244 obs og 13 variabler:
 \item{treslag}{chr  "Gran"   "Furu"   "Lauv"   "Ukjent"}#'
 \item{sortimentgruppe}{sortimentgruppe chr "toemmer" "sams" "massevirke" "annet"}
 \item{aar}{Aarstall; int 1996 1997 ...}
-\item{reg_n2020}{Regionnavn pr 2020 chr "Hele landet" "Halden" "Moss" "Sarpsborg" "Fredrikstad"}
-\item{reg_k2020}{Regionkode pr 2020 chr "0301" "1101" "1103" "1106" "1108" "1111" "1112" "1114"}
+\item{reg_n20xx}{Regionnavn pr 20xx chr "Hele landet" "Halden" "Moss" "Sarpsborg" "Fredrikstad"}
+\item{reg_k20xx}{Regionkode pr 20xx chr "0301" "1101" "1103" "1106" "1108" "1111" "1112" "1114"}
 }
 }
 \source{

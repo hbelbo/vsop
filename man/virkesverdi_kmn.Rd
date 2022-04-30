@@ -14,8 +14,8 @@ dataframe med om lag 9542 obs og 7 variabler
 \item{region_kode}{Regionkode <chr> "0101", "0101", }
 \item{Tid}{samme som årstall, <chr> "1996", "1997", "1998",}
 \item{aar}{Aarstall; int "1996" "1997" ...}
-\item{reg_n2020}{Regionnavn (kommunenavn) pr 2020 chr "Hele landet" "Halden" "Moss" "Sarpsborg" "Fredrikstad"}
-\item{reg_k2020}{Regionkode (kommunekode) pr 2020}
+\item{reg_n20xx}{Regionnavn (kommunenavn) pr 20xx chr "Hele landet" "Halden" "Moss" "Sarpsborg" "Fredrikstad"}
+\item{reg_k20xx}{Regionkode (kommunekode) pr 20xx}
 }
 }
 \source{

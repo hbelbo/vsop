@@ -11,8 +11,8 @@ En tibble med 436 rader (436 kommuner i '94) og 26 variabler:
 \item{reg_name_199401}{Regionnavn januar 1994; chr "Halden" "Moss" ...}
 \item{reg_code_200201}{Regionkode januar 2002; chr "0101" "0104"...}
 \item{reg_name_200201}{Regionnavn januar 2002; chr "Halden" "Moss" ...}
-\item{...code...}{fortsetter paa samme vis til 2020}
-\item{...name...}{fortsetter paa samme vis til 2020}
+\item{...code...}{fortsetter paa samme vis til 20xx}
+\item{...name...}{fortsetter paa samme vis til 20xx}
 }
 }
 \source{

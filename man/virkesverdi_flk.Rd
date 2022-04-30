@@ -6,7 +6,6 @@
 \title{Brutto virkesverdi fordelt på fylke og år fra 1996}
 \format{
 data.frame:
-
 \describe{
 \item{\code{region}}{Navn paa kommunen (paa hogsttidspunkt); chr "Hele landet" "Halden" ...}
 \item{statistikkvariabel}{ ; chr "Bruttoverdi" "Bruttoverdi"}
@@ -15,8 +14,8 @@ data.frame:
 \item{region_kode}{Regionkode <chr> "0101", "0101", }
 \item{Tid}{samme som årstall, <chr> "1996", "1997", "1998",}
 \item{aar}{Aarstall; int "1996" "1997" ...}
-\item{\code{reg_n2020}}{Regionnavn (kommunenavn) pr 2020 chr "Hele landet" "Halden" "Moss" "Sarpsborg" "Fredrikstad"}
-\item{reg_k2020}{Regionkode (kommunekode) pr 2020}
+\item{\code{reg_n20xx}}{Regionnavn (kommunenavn) pr 20xx chr "Hele landet" "Halden" "Moss" "Sarpsborg" "Fredrikstad"}
+\item{reg_k20xx}{Regionkode (kommunekode) pr 20xx}
 }
 }
 \source{
