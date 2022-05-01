@@ -36,6 +36,15 @@ ld_avvirk_fylke <- function() {
     dplyr::ungroup()
 usethis::use_data( avvirk_fylke_ldir, overwrite = T, version = 3)
 
+# # checking that nothing went lost
+# avvirk_fylke_ldir %>% group_by(aar) %>% summarise(n = n(), regioner = length(unique(reg_k2022)), totalvolum = sum(totalvolum))
+# avvirk_fylke_test <- ld_avvirk_fylke()
+# avvirk_fylke_test %>% group_by(AVVIRKAAR) %>% summarise(TOTALVOLUM = sum(as.numeric(TOTALVOLUM)))
+# avvirk_fylke_test %>% filter(AVVIRKAAR == 2021) %>% group_by(FYLKENR) %>% summarise(n = n(), vol = sum(as.numeric(TOTALVOLUM)))
+# avvirk_fylke_test %>% filter(AVVIRKAAR == 2021, FYLKENR == "03")
+
+
+
 
 ld_avvirk_kommune <- function() {
   # kommunevise avvirkningsstatistikk fra landbruksdirektoratets excel-filer
