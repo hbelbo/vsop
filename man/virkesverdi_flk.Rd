@@ -25,7 +25,6 @@ data.frame:
 virkesverdi_flk
 }
 \description{
-Data fra SSB, tabell 03794:
-Bruttoverdi. Avvirkning for salg (1 000 kr) (K) 1996 - dd
+Data fra SSB, tabell 03794: Bruttoverdi. Avvirkning for salg (1 000 kr) (K) 1996 - dd
 }
 \keyword{datasets}

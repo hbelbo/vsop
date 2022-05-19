@@ -65,8 +65,7 @@
 
 #' @title Brutto virkesverdi fordelt på fylke og år fra 1996
 #'
-#' @description Data fra SSB, tabell 03794:
-#' Bruttoverdi. Avvirkning for salg (1 000 kr) (K) 1996 - dd
+#' @description Data fra SSB, tabell 03794: Bruttoverdi. Avvirkning for salg (1 000 kr) (K) 1996 - dd
 #'
 #' @format data.frame:
 #' \describe{
