@@ -29,8 +29,8 @@ ld_avvirk_fylke <- function() {
                          M3PRIS = as.numeric(M3PRIS))) %>%
   dplyr::rename_with(tolower) ) %>%
     dplyr::group_by_at(vars(starts_with("reg_"), aar, sortkode, sortiment, virkesgrp, virkeskat, kategoritekst))  %>%
-    dplyr::summarise(totalvolum = sum(totalvolum),
-                   totalverdi = sum(totalverdi),
+    dplyr::summarise(totalvolum = sum(totalvolum, na.rm=TRUE),
+                   totalverdi = sum(totalverdi, na.rm = TRUE),
                    m3pris = totalverdi / totalvolum,
                    region_kode = paste0(unique(region_kode), collapse = ", ")) %>%
     dplyr::ungroup()
@@ -39,7 +39,7 @@ usethis::use_data( avvirk_fylke_ldir, overwrite = T, version = 3)
 # # checking that nothing went lost
 # avvirk_fylke_ldir %>% group_by(aar) %>% summarise(n = n(), regioner = length(unique(reg_k2022)), totalvolum = sum(totalvolum))
 # avvirk_fylke_test <- ld_avvirk_fylke()
-# avvirk_fylke_test %>% group_by(AVVIRKAAR) %>% summarise(TOTALVOLUM = sum(as.numeric(TOTALVOLUM)))
+# avvirk_fylke_test %>% group_by(AVVIRKAAR) %>% summarise(TOTALVOLUM = sum(as.numeric(TOTALVOLUM), na.rm=TRUE))
 # avvirk_fylke_test %>% filter(AVVIRKAAR == 2021) %>% group_by(FYLKENR) %>% summarise(n = n(), vol = sum(as.numeric(TOTALVOLUM)))
 # avvirk_fylke_test %>% filter(AVVIRKAAR == 2021, FYLKENR == "03")
 
