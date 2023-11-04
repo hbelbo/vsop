@@ -11,8 +11,8 @@ dataframe med om lag 9542 obs og 7 variabler
 \item{statistikkvariabel}{ ; chr "Bruttoverdi" "Bruttoverdi"}
 \item{år}{Aarstall; chr "1996" "1997" ...}
 \item{bruttoverdi}{Brutto verdi av solgt industrivirke NOK: int 2709220 2877766 2608427 ...  }
-\item{region_kode}{Regionkode <chr> "0101", "0101", }
-\item{Tid}{samme som årstall, <chr> "1996", "1997", "1998",}
+\item{region_kode}{Regionkode \if{html}{\out{<chr>}} "0101", "0101", }
+\item{Tid}{samme som årstall, \if{html}{\out{<chr>}} "1996", "1997", "1998",}
 \item{aar}{Aarstall; int "1996" "1997" ...}
 \item{reg_n20xx}{Regionnavn (kommunenavn) pr 20xx chr "Hele landet" "Halden" "Moss" "Sarpsborg" "Fredrikstad"}
 \item{reg_k20xx}{Regionkode (kommunekode) pr 20xx}
