@@ -11,10 +11,10 @@ t12750()
 en tibble med hele datasetet.
 }
 \description{
-Tabellen gir snittpris per sortiment per fylke, fra 2006 til 2019.
+Tabellen gir snittpris per sortiment per fylke, fra 2006 til dd.
 Virke blir klassifisert per treslag og sortimentgrupper (skur, massevirke, sams, annet)
 https://www.ssb.no/statbank/list/skogav
 }
 \examples{
-t12750()
+prisstat <- t12750()
 }

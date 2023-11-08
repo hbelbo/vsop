@@ -6,7 +6,7 @@
 Hogststatistikk for rundvirke SSB tabell 03895
 1996 - dd}
 \usage{
-t03895(region_level = "fylke")
+t03895(region_level = "fylker2020", periode = TRUE)
 }
 \arguments{
 \item{region_level}{regionnivaa; velg ett av landet, fylke or kommune}
@@ -19,5 +19,9 @@ Tabellen gir avvirkningsvolum for salg, etter sortiment, kommune, year.
 Volum er avregningsvolum (m3pris)
 }
 \examples{
-t03895() \%>\% dplyr::glimpse()
+volumstat <- t03895()
+volumstat2 <- t03895(region_level = "fylke")
+volumstat3 <- t03895(region_level = "kommune")
+volumstat4 <- t03895(region_level = "fylke", periode = c("2021"))
+str(volumstat)
 }

@@ -4,7 +4,7 @@
 #' Skogsavvirkning priser t12750
 #' prisstatistikk for virke fra SSB tabell 12750
 #'
-#' Tabellen gir snittpris per sortiment per fylke, fra 2006 til 2019.
+#' Tabellen gir snittpris per sortiment per fylke, fra 2006 til dd.
 #' Virke blir klassifisert per treslag og sortimentgrupper (skur, massevirke, sams, annet)
 #' https://www.ssb.no/statbank/list/skogav
 #'
@@ -13,7 +13,7 @@
 #' @importFrom rlang .data
 #'
 #' @examples
-#' t12750()
+#' prisstat <- t12750()
 t12750 <- function(){
   metadt <- PxWebApiData::ApiData("http://data.ssb.no/api/v0/no/table/12750", returnMetaData = TRUE)
   regcodes <- unlist(purrr::flatten(metadt[[1]][3]))
