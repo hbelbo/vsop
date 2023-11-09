@@ -6,10 +6,12 @@
 Hogststatistikk for rundvirke SSB tabell 03895
 1996 - dd}
 \usage{
-t03895(region_level = "fylker2020", periode = TRUE)
+t03895(region_level = "fylker2020", Tid = TRUE)
 }
 \arguments{
 \item{region_level}{regionnivaa; velg ett av landet, fylke or kommune}
+
+\item{Tid}{same as Tid variable used in PxWebApiData::Introduction}
 }
 \value{
 en tibble
@@ -22,6 +24,5 @@ Volum er avregningsvolum (m3pris)
 volumstat <- t03895()
 volumstat2 <- t03895(region_level = "fylke")
 volumstat3 <- t03895(region_level = "kommune")
-volumstat4 <- t03895(region_level = "fylke", periode = c("2021"))
-str(volumstat)
+volumstat4 <- t03895(region_level = "fylke", Tid = c("2021"))
 }
