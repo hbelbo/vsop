@@ -20,7 +20,8 @@
 #' @importFrom rlang .data
 #'
 #'
-#' @examples regnavn.at.ref.yr(regionstat = t12750()) %>% glimpse()
+#' @examples
+#' regnavn.at.ref.yr(regionstat = t12750()) %>% glimpse()
 regnavn.at.ref.yr <- function(regionstat, ref.yr = lubridate::year(lubridate::now())){
   #    regionstat = t12750() #for testing
   #    regionstat = t03895(region_level = "kommune") #for testing

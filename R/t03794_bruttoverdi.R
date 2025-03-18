@@ -19,13 +19,30 @@
 t03794 <- function(region_level = c("fylker", "kommuner")[1]){
 
 
+  file_path_flk <- system.file("extdata", "ssbapi_table_03794_agg_single_FylkerGjeldende_20250317.json", package = "vsop")
+  file_path_kmn <- system.file("extdata", "ssbapi_table_03794_agg_single_KommGjeldende_20250318.json", package = "vsop")
+
+  # Check if the file exists
+  if (file.exists(file_path_flk) & file.exists(file_path_kmn)) {
+    # Read the JSON file into a variable
+    region_agg_flk <- jsonlite::fromJSON(file_path_flk)
+    region_agg_kmn <- jsonlite::fromJSON(file_path_kmn)
+  } else {
+    stop("File 'ssbapi_table_03794_agg_single_FylkerGjeldende_yyyymmdd.json' or
+         'ssbapi_table_03794_agg_single_KommGjeldende_yyyymmdd.json'not found: ", file_path)
+  }
+
+
     if(tolower(region_level) %in% c("fylker", "fylke")){
     reginnd <- "fylker"
     #region_agg <- jsonlite::fromJSON("inst/extdata/agg_summer_fylker_20250317.json")
-    region_agg <- jsonlite::fromJSON("./json/ssbapi_table_03794_agg_single_FylkerGjeldende_20250317.json")
+    #region_agg <- jsonlite::fromJSON("./json/ssbapi_table_03794_agg_single_FylkerGjeldende_20250317.json")
+    region_agg <- region_agg_flk
+
   } else if(tolower(region_level) %in% c("kommune", "kommuner")) {
     reginnd <- "kommuner"
-    region_agg <- jsonlite::fromJSON("./json/ssbapi_table_03794_agg_single_KommGjeldende_20250318.json")
+    region_agg <- region_agg_kmn
+    #region_agg <- jsonlite::fromJSON("./json/ssbapi_table_03794_agg_single_KommGjeldende_20250318.json")
     #region_agg <- jsonlite::fromJSON("inst/extdata/agg_summer_kommuner_20250317.json")
   }
 
@@ -56,7 +73,7 @@ t03794 <- function(region_level = c("fylker", "kommuner")[1]){
 
     dplyr::rename(  bruttoverdi = "value") %>%
     dplyr::bind_cols( (ds %>% dplyr::select( "region_kode", "Tid"))) %>%
-    dplyr::filter( region %in% regioner_utvalg) %>%
+    dplyr::filter( .data$region %in% regioner_utvalg) %>%
     dplyr::mutate( aar = as.integer(.data$Tid))
 
   return(bruttov)

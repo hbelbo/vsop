@@ -19,9 +19,16 @@ t12750 <- function(){
   #fylker <- regcodes[stringr::str_length(regcodes) == 2]
 
 
+  file_path <- system.file("extdata", "agg_single_fylker_20250317.json", package = "vsop")
+  # Check if the file exists
+  if (file.exists(file_path)) {
+    # Read the JSON file into a variable
+    region_agg_ <- jsonlite::fromJSON(file_path)
+  } else {
+    stop("File 'agg_single_fylker_yyyymmdd.json' not found: ", file_path)
+  }
 
 
-  region_agg_ <- jsonlite::fromJSON("inst/extdata/agg_single_fylker_20250317.json")
   region_category_ <- region_agg_$dimension$Region$category$label
   region_index_ <- region_agg_$dimension$Region$category$index
 

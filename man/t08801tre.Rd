@@ -22,5 +22,7 @@ Not sure if energywood assortments and wood is included
  dt \%>\% mutate(kr_pr_m3 = ifelse(!is.na(m3) & m3>0, kr / m3, NA_real_)) \%>\%
   filter(!(stringr::str_detect(.data$grovsort, "440") )) \%>\%
    dplyr::filter(.data$kr_pr_m3 > 2000) \%>\%
-  arrange(desc(kr_pr_m3)) \%>\% select(Tid, Varekoder, ImpEks, grovsort, assortment, m3, kg, kr, kr_pr_m3, norsk) \%>\% str()
+  arrange(desc(kr_pr_m3)) \%>\%
+  select(Tid, Varekoder, ImpEks, grovsort, assortment, m3, kg, kr,
+  kr_pr_m3, norsk) \%>\% str()
 }

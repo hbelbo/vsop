@@ -7,7 +7,6 @@
 #' Volum er avregningsvolum (m3pris)
 #'
 #' @param region_level regionnivaa; velg ett av landet, fylke or kommune
-#' @param Tid same as Tid variable used in PxWebApiData::Introduction
 #'
 #' @return en tibble
 #' @export
@@ -25,12 +24,28 @@ t03895 <- function(region_level = c("fylker", "kommuner")[1]) { # 1996 - dd
   #regcodes <- unlist(purrr::flatten(metadt[[1]][3]))
   #fylker <- regcodes[stringr::str_length(regcodes) == 2]
   #kommuner <-  regcodes[stringr::str_length(regcodes) == 4]
+
+
+  file_path_flk <- system.file("extdata", "agg_summer_fylker_20250317.json", package = "vsop")
+  file_path_kmn <- system.file("extdata", "agg_summer_kommuner_20250317.json", package = "vsop")
+
+  # Check if the file exists
+  if (file.exists(file_path_flk) & file.exists(file_path_kmn)) {
+    # Read the JSON file into a variable
+    region_agg_flk <- jsonlite::fromJSON(file_path_flk)
+    region_agg_kmn <- jsonlite::fromJSON(file_path_kmn)
+  } else {
+    stop("File 'agg_summer_fylker_20250317.json' or
+         'agg_summer_kommuner_20250317.json'not found: ", file_path)
+  }
+
+
   if(tolower(region_level) %in% c("fylker", "fylke")){
     reginnd <- "fylker"
-      region_agg <- jsonlite::fromJSON("inst/extdata/agg_summer_fylker_20250317.json")
+      region_agg <- region_agg_flk
   } else {
     reginnd <- "kommuner"
-    region_agg <- jsonlite::fromJSON("inst/extdata/agg_summer_kommuner_20250317.json")
+    region_agg <- region_agg_kmn
   }
 
 

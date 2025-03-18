@@ -13,7 +13,9 @@
  #'  dt %>% mutate(kr_pr_m3 = ifelse(!is.na(m3) & m3>0, kr / m3, NA_real_)) %>%
  #'   filter(!(stringr::str_detect(.data$grovsort, "440") )) %>%
  #'    dplyr::filter(.data$kr_pr_m3 > 2000) %>%
- #'   arrange(desc(kr_pr_m3)) %>% select(Tid, Varekoder, ImpEks, grovsort, assortment, m3, kg, kr, kr_pr_m3, norsk) %>% str()
+ #'   arrange(desc(kr_pr_m3)) %>%
+ #'   select(Tid, Varekoder, ImpEks, grovsort, assortment, m3, kg, kr,
+ #'   kr_pr_m3, norsk) %>% str()
 t08801tre <- function() {
 
     # Eksempel fra SSB
@@ -190,7 +192,7 @@ plot_rw_export <- function(){
     ggplot2::geom_line(ggplot2::aes(group = .data$grp, color = .data$produktkategori)) +
     ggplot2::geom_point(ggplot2::aes(shape = .data$treslagskategori, color = .data$produktkategori)) +
     ggpubr::theme_pubr()   +
-    ggplot2::labs(x = "år", y = expression("1000 "~ m^3), color = "Produktkategori", shape = "Treslagskategori")
+    ggplot2::labs(x = "Aar", y = expression("1000 "~ m^3), color = "Produktkategori", shape = "Treslagskategori")
   #p_eksp_m3_no
 
   p_eksp_pris_en <-

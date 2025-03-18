@@ -10,8 +10,6 @@ t03895(region_level = c("fylker", "kommuner")[1])
 }
 \arguments{
 \item{region_level}{regionnivaa; velg ett av landet, fylke or kommune}
-
-\item{Tid}{same as Tid variable used in PxWebApiData::Introduction}
 }
 \value{
 en tibble

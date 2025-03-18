@@ -23,7 +23,8 @@ Imports:
     lubridate,
     rlang,
     ggplot2,
-    ggpubr
+    ggpubr,
+    jsonlite
 Depends: 
     dplyr,
     R (>= 3.5)
