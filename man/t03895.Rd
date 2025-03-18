@@ -6,7 +6,7 @@
 Hogststatistikk for rundvirke SSB tabell 03895
 1996 - dd}
 \usage{
-t03895(region_level = "fylker2020", Tid = TRUE)
+t03895(region_level = c("fylker", "kommuner")[1])
 }
 \arguments{
 \item{region_level}{regionnivaa; velg ett av landet, fylke or kommune}
@@ -24,5 +24,4 @@ Volum er avregningsvolum (m3pris)
 volumstat <- t03895()
 volumstat2 <- t03895(region_level = "fylke")
 volumstat3 <- t03895(region_level = "kommune")
-volumstat4 <- t03895(region_level = "fylke", Tid = c("2021"))
 }

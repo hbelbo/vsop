@@ -1,0 +1,38 @@
+{"queryObj":{
+  "query": [
+    {
+      "code": "Region",
+      "selection": {
+        "filter": "agg:KommSummer",
+        "values": [
+          "K-3101"
+        ]
+      }
+    },
+    {
+      "code": "Treslag",
+      "selection": {
+        "filter": "agg:Treslag2Nyeste",
+        "values": [
+          "Treslag2a",
+          "Treslag2b",
+          "Treslag2c",
+          "Treslag2d",
+          "Treslag2e",
+          "Treslag2f",
+          "Treslag2g",
+          "Treslag2h",
+          "Treslag2i",
+          "Treslag2j",
+          "Treslag2k",
+          "Treslag2l",
+          "Treslag2m",
+          "Treslag2n"
+        ]
+      }
+    }
+  ],
+  "response": {
+    "format": "json-stat2"
+  }
+},"tableIdForQuery":"03895","postUrl":"https://data.ssb.no/api/v0/no/table/03895"}

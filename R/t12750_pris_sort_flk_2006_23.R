@@ -15,14 +15,31 @@
 #' prisstat <- t12750()
 t12750 <- function(){
   metadt <- PxWebApiData::ApiData("http://data.ssb.no/api/v0/no/table/12750", returnMetaData = TRUE)
-  regcodes <- unlist(purrr::flatten(metadt[[1]][3]))
-  fylker <- regcodes[stringr::str_length(regcodes) == 2]
+  #regcodes <- unlist(purrr::flatten(metadt[[1]][3]))
+  #fylker <- regcodes[stringr::str_length(regcodes) == 2]
+
+
+
+
+  region_agg_ <- jsonlite::fromJSON("inst/extdata/agg_single_fylker_20250317.json")
+  region_category_ <- region_agg_$dimension$Region$category$label
+  region_index_ <- region_agg_$dimension$Region$category$index
+
+  region_df_ <- data.frame(
+    Category = names(region_category_),
+    Label = unlist(region_category_),
+    Index = unlist(region_index_[names(region_category_)])
+  )
+
 
   pxdt <- PxWebApiData::ApiData("http://data.ssb.no/api/v0/no/table/12750" , #returnMetaFrames = T)
                                 # Gjennomsnittspris, etter sortiment (kr per m3) (F)
                                 # tidsserie 2006 - 2019
                                 # NB: 0 betyr NULL
-                                Region = fylker, ContentsCode = T,
+                                #Region = list("agg:KommFylker", region_df$Category),
+                                Region = list("agg_single:FylkerGjeldende", region_df_$Category),
+                                #Region = fylker,
+                                #ContentsCode = T,
                                 Tid = T,
                                 Treslag = T
   )
@@ -32,11 +49,11 @@ t12750 <- function(){
     dplyr::pull(.data$Region)
 
   ds <- tibble::as_tibble(pxdt[[2]]) %>%
-    dplyr::rename( region_kode = .data$Region,  virkeskategori = .data$Treslag, Pris = .data$value) #Modding variable names
+    dplyr::rename( region_kode = "Region",  virkeskategori = "Treslag", Pris = "value") #Modding variable names
 
   priser <- tibble::as_tibble(pxdt[[1]])  %>%
-    dplyr::rename( kategoritekst = .data$sortiment, pris = .data$value) %>%
-    dplyr::bind_cols( (ds %>% dplyr::select(.data$region_kode, .data$virkeskategori, .data$Tid))) %>%
+    dplyr::rename( kategoritekst = "sortiment", pris = "value") %>%
+    dplyr::bind_cols( (ds %>% dplyr::select("region_kode", "virkeskategori", "Tid"))) %>%
     dplyr::filter(.data$region_kode %in% regioner_utvalg)  %>%
     dplyr::mutate(
       treslag = dplyr::case_when(
