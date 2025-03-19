@@ -125,7 +125,8 @@ t08801tre <- function() {
 #' @export
 #'
 #' @examples
-#' plot_rw_export()[[1]]
+#' pts <- plot_rw_export()
+#' pts[[1]]
 plot_rw_export <- function(){
   # table(plotdat$)
   sumvars <- c("kr", "m3", "kg")
@@ -157,13 +158,13 @@ plot_rw_export <- function(){
         TRUE ~ .data$grovsort
       ),
       produktkategori = dplyr::case_when(
-        stringr::str_detect(.data$grovsort, "mv") ~ "mv",
-        stringr::str_detect(.data$grovsort, "sagt") ~ "sagt",
+        stringr::str_detect(.data$grovsort, "mv") ~ "Massev",
+        stringr::str_detect(.data$grovsort, "sagt") ~ "Sagt",
         TRUE ~ .data$grovsort
       ),
       productcategory = dplyr::case_when(
-        stringr::str_detect(.data$grovsort, "mv") ~ "pulp",
-        stringr::str_detect(.data$grovsort, "sagt") ~ "sawlogs",
+        stringr::str_detect(.data$grovsort, "mv") ~ "Pulpw",
+        stringr::str_detect(.data$grovsort, "sagt") ~ "Sawlogs",
         TRUE ~ .data$grovsort
       ),
       grp = paste0(.data$productcategory, " ", .data$speciescategory)) %>%
@@ -171,20 +172,28 @@ plot_rw_export <- function(){
     dplyr::summarise(dplyr::across( dplyr::all_of(sumvars), sum)) %>%
     dplyr::mutate(year = as.numeric(.data$Tid),
                   pris_kr_m3 = .data$kr / .data$m3) %>%
-    dplyr::filter(.data$pris_kr_m3 < 1000, .data$m3 > 5000) %>%
+    # dplyr::filter(.data$pris_kr_m3 < 1500, .data$m3 > 5000) %>%
     dplyr::group_by(.data$produktkategori, .data$treslagskategori, .data$grp) %>%
     dplyr::mutate(ndat = length(unique(.data$Tid)) ) %>%
     dplyr::ungroup() %>%
     dplyr::filter(.data$ndat > 15)
 
+  #summary(plotdat2$pris_kr_m3)
+  plotdat2 <- plotdat2 %>% dplyr::filter( .data$m3 > 20000)
+
+  #plotdat2 %>% dplyr::filter(.data$pris_kr_m3 > 800)
+  #plotdat2 %>% dplyr::filter(.data$pris_kr_m3 < 250)
   # head(plotdat2 %>% arrange(ndat))
+  # plotdat2 %>% group_by(Tid, grp) %>% summarise(n = n()) %>% arrange(desc(n)) %>% head() # bare en obs pr gruppe og år!
 
   p_eksp_m3_en <-  ggplot2::ggplot(plotdat2,
     ggplot2::aes( x = .data$year, y = .data$m3/1000)) +
     ggplot2::geom_line(ggplot2::aes(group = .data$grp, color = .data$productcategory)) +
     ggplot2::geom_point(ggplot2::aes(shape = .data$speciescategory, color = .data$productcategory)) +
     ggpubr::theme_pubr()   +
-    ggplot2::labs(x = "year", y = expression("1000 "~ m^3), color = "productcategory", shape = "speciescategory")
+    cowplot::background_grid() +
+    ggplot2::guides(color = ggplot2::guide_legend(nrow = 2), shape = ggplot2::guide_legend(nrow = 2))+
+    ggplot2::labs(x = "Year", y = expression("1000 "~ m^3), color = "Product", shape = "Species")
   # p_eksp_m3_en
 
   p_eksp_m3_no <-  ggplot2::ggplot(plotdat2 ,
@@ -192,32 +201,40 @@ plot_rw_export <- function(){
     ggplot2::geom_line(ggplot2::aes(group = .data$grp, color = .data$produktkategori)) +
     ggplot2::geom_point(ggplot2::aes(shape = .data$treslagskategori, color = .data$produktkategori)) +
     ggpubr::theme_pubr()   +
-    ggplot2::labs(x = "Aar", y = expression("1000 "~ m^3), color = "Produktkategori", shape = "Treslagskategori")
+    cowplot::background_grid() +
+    ggplot2::guides(color = ggplot2::guide_legend(nrow = 2), shape = ggplot2::guide_legend(nrow = 2))+
+    ggplot2::labs(x = "Aar", y = expression("1000 "~ m^3), color = "Produkt", shape = "Treslag")
   #p_eksp_m3_no
 
   p_eksp_pris_en <-
-    ggplot2::ggplot(plotdat2 %>% dplyr::filter(.data$pris_kr_m3 < 1000),
+    ggplot2::ggplot(plotdat2, # %>% dplyr::filter(.data$pris_kr_m3 < 1500),
                     ggplot2::aes( x = .data$year, y = .data$pris_kr_m3)) +
     ggplot2::geom_line(ggplot2::aes(group = .data$grp, color = .data$productcategory)) +
+    ggplot2::guides(color = ggplot2::guide_legend(nrow = 2), shape = ggplot2::guide_legend(nrow = 2))+
     ggplot2::geom_point(ggplot2::aes(shape = .data$speciescategory, color = .data$productcategory)) +
     ggpubr::theme_pubr()   +
-    ggplot2::labs(x = "year", y = expression("Price, NOK " ~ m^3^-1), color = "productcategory", shape = "speciescategory")
+    cowplot::background_grid() +
+    ggplot2::labs(x = "Year", y = expression("Price, NOK " ~ m^3^-1), color = "Product", shape = "Species")
    # p_eksp_pris_en
 
   p_eksp_pris_no <-
-    ggplot2::ggplot(plotdat2 %>% dplyr::filter(.data$pris_kr_m3 < 1000),
+    ggplot2::ggplot(plotdat2, # %>% dplyr::filter(.data$pris_kr_m3 < 1500),
                     ggplot2::aes( x = .data$year, y = .data$pris_kr_m3)) +
     ggplot2::geom_line(ggplot2::aes(group = .data$grp, color = .data$produktkategori)) +
     ggplot2::geom_point(ggplot2::aes(shape = .data$treslagskategori, color = .data$produktkategori)) +
     ggpubr::theme_pubr()   +
-    ggplot2::labs(x = "year", y = expression("pris, kr per " ~ m^3), color = "Produktkategori", shape = "Treslagskategori")
+    cowplot::background_grid() +
+    ggplot2::guides(color = ggplot2::guide_legend(nrow = 2), shape = ggplot2::guide_legend(nrow = 2))+
+
+    ggplot2::labs(x = "År", y = expression("Pris, kr per " ~ m^3), color = "Produkt", shape = "Treslag")
   # p_eksp_pris_no
 
 retlist <- list(p_eksp_m3_en = p_eksp_m3_en,
                 p_eksp_m3_no = p_eksp_m3_no,
                 p_eksp_pris_en = p_eksp_pris_en,
-                p_eksp_pris_no = p_eksp_pris_no
-                )
+                p_eksp_pris_no = p_eksp_pris_no,
+
+                plotdat = plotdat2)
 return(retlist)
 
 }

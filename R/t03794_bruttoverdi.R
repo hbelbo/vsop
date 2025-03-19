@@ -29,7 +29,7 @@ t03794 <- function(region_level = c("fylker", "kommuner")[1]){
     region_agg_kmn <- jsonlite::fromJSON(file_path_kmn)
   } else {
     stop("File 'ssbapi_table_03794_agg_single_FylkerGjeldende_yyyymmdd.json' or
-         'ssbapi_table_03794_agg_single_KommGjeldende_yyyymmdd.json'not found: ", file_path)
+         'ssbapi_table_03794_agg_single_KommGjeldende_yyyymmdd.json'not found: ", file_path_flk)
   }
 
 
@@ -64,7 +64,7 @@ t03794 <- function(region_level = c("fylker", "kommuner")[1]){
     dplyr::summarize( volumtot = sum(.data$bruttoverdi, na.rm = T)) %>%
     dplyr::filter( .data$volumtot > 0) %>%
     dplyr::ungroup() %>%
-    dplyr::pull(region)
+    dplyr::pull(.data$region)
 
   ds <- tibble::as_tibble(pxdt[[2]]) %>%
     dplyr::rename( region_kode = "Region")

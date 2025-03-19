@@ -36,7 +36,7 @@ t03895 <- function(region_level = c("fylker", "kommuner")[1]) { # 1996 - dd
     region_agg_kmn <- jsonlite::fromJSON(file_path_kmn)
   } else {
     stop("File 'agg_summer_fylker_20250317.json' or
-         'agg_summer_kommuner_20250317.json'not found: ", file_path)
+         'agg_summer_kommuner_20250317.json'not found: ", file_path_flk)
   }
 
 
