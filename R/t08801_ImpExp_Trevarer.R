@@ -59,13 +59,15 @@ engnorsk %>% select(varvals, norsk) %>% arrange(varvals)
         varvals %in% c("44013001_1988", "44013002_1988", "44013008_2009", "44013901_2012",  "44013902_2012", "44013909_2012",
                            "44014011_2017", "44014019_2017", "44014021_2017", "44014029_2017",
                            "44014101_2022", "44014109_2022", "44014901_2022",   "44014909_2022" ) ~ "Ind. flis avfall bark"  ,
-        varvals %in% c("44013009_1988", "44013003_2009", "44013100_2012", "44013108_2017", "44013101_2017", "44013903_2017", "44013908_2017", "44013201_2022", "44013209_2022", "44013904_2022", "44013907_2022") ~ "Pellets og briketter",
+        varvals %in% c("44013009_1988", "44013003_2009", "44013100_2012", "44013108_2017",
+                       "44013101_2017", "44013903_2017", "44013908_2017", "44013201_2022", "44013209_2022", "44013904_2022", "44013907_2022") ~ "Pellets og briketter",
         varvals %in% c("44012101_1988") ~ "Celluloseflis",
         varvals %in% c("44012109_1988", "44012200_1988", "44012109_2022") ~ "Skogsflis",
         varvals %in% c("44011000_1988", "44011100_2017", "44011200_2017", "44011101_2024", "44011109_2024", "44011201_2024", "44011209_2024" ) ~ "Ved til brensel",
-        stringr::str_detect(string = .data$norsk, pattern = "^44034900") ~ "Annet div sagt",
-        stringr::str_detect(string = .data$norsk, pattern = "^44039908") ~ "Annet div sagt",
-        stringr::str_detect(string = .data$norsk, pattern = "^44033500_") ~ "Annet div sagt",
+        stringr::str_detect(string = .data$varvals, pattern = "^44033200_") ~ "Annet div sagt",
+        stringr::str_detect(string = .data$varvals, pattern = "^44034900_") ~ "Annet div sagt",
+        stringr::str_detect(string = .data$varvals, pattern = "^44039908_") ~ "Annet div sagt",
+        stringr::str_detect(string = .data$varvals, pattern = "^44033500_") ~ "Annet div sagt",
         varvals %in% c("44039909_1988" ) ~ "Annet div sagt",
         TRUE ~ varvals
       )) %>%
@@ -85,7 +87,7 @@ engnorsk %>% select(varvals, norsk) %>% arrange(varvals)
         TRUE ~ .data$grovsort)
       )
 
-  engnorsk %>% select(varvals, grovsort, norsk) %>% arrange(varvals)
+  #engnorsk %>% select(varvals, grovsort, norsk) %>% arrange(varvals)
 
   # ## For checking
   #  engnorsk %>% dplyr::select(.data$varvals, .data$norsk, .data$grovsort) %>% dplyr::filter(stringr::str_detect(.data$norsk, "mmer av gran")) %>% .[1:20,]

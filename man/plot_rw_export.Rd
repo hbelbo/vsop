@@ -13,5 +13,6 @@ a list of four plots
 Plot roundwood export volume and prices
 }
 \examples{
-plot_rw_export()[[1]]
+pts <- plot_rw_export()
+pts[[1]]
 }
