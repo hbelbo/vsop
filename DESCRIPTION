@@ -24,7 +24,8 @@ Imports:
     rlang,
     ggplot2,
     ggpubr,
-    jsonlite
+    jsonlite,
+    cowplot
 Depends: 
     dplyr,
     R (>= 3.5)

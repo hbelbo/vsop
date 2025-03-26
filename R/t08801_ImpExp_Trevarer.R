@@ -38,7 +38,7 @@ t08801tre <- function() {
   beskr <- data.frame(varvals = varvals, vartext = vartext)
 
   engnorsk <- dplyr::left_join(descr, beskr, by = c("varvals")) %>% dplyr::rename(norsk = "vartext.y", eng = "vartext.x")
-engnorsk %>% select(varvals, norsk) %>% arrange(varvals)
+# engnorsk %>% dplyr::select(varvals, norsk) %>% dplyr::arrange(varvals)
 # str(engnorsk)
   engnorsk <- engnorsk %>%
     dplyr::mutate(

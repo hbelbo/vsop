@@ -15,11 +15,14 @@ t03895(region_level = c("fylker", "kommuner")[1])
 en tibble
 }
 \description{
-Tabellen gir avvirkningsvolum for salg, etter sortiment, kommune, year.
+Tabellen gir avvirkningsvolum for salg, etter sortiment, kommune, år.
 Volum er avregningsvolum (m3pris)
 }
 \examples{
 volumstat <- t03895()
 volumstat2 <- t03895(region_level = "fylke")
+volumstat2 \%>\% filter(region == "Trøndelag" ) \%>\% group_by(region, aar) \%>\% summarise(m3 = sum(m3, na.rm =TRUE)) \%>\%  head()
 volumstat3 <- t03895(region_level = "kommune")
+unique(volumstat3$region)
+volumstat3 \%>\% filter(region == "Steinkjer") \%>\% group_by(region, aar) \%>\% summarise(m3 = sum(m3, na.rm = TRUE)) \%>\%  tail()
 }
