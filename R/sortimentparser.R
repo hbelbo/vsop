@@ -11,7 +11,7 @@
 #' df <- tibble::tibble(sortiment = c("Gran spesialtømmer","Furu massevirke" ))
 #' sortimentparser(df)
 sortimentparser <- function(tbbl){
-  tbbl <- tbbl %>% mutate(
+  tbbl <- tbbl %>% dplyr::mutate(
     treslag = dplyr::case_when(stringr::str_detect(sortiment, "^Gran") ~ "Gran",
                         stringr::str_detect(sortiment, "^Furu") ~ "Furu",
                         stringr::str_detect(sortiment, "^Lauvtre") ~ "Lauv",
@@ -25,7 +25,7 @@ sortimentparser <- function(tbbl){
       stringr::str_detect(sortiment, "annet rundvirke$") ~ "Massevirke",
       TRUE ~ sortiment)
   ) %>%
-    mutate(
+    dplyr::mutate(
       Species = dplyr::case_when(treslag == "Gran" ~ "Spruce",
                           treslag == "Furu" ~ "Pine",
                           treslag == "Lauv" ~ "Broadleave",

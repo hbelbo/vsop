@@ -3,7 +3,7 @@
 
 #' Biomass expansion factors according to Lethonen etal 2004
 #'
-#' @param species one of {"spruce", "gran", "pine", "furu", "broadleave", "løv", "lauv", "bjørk"}
+#' @param species one of ("spruce", "gran", "pine", "furu", "broadleave", "løv", "lauv", "bjørk")
 #' @param age age of the stand (numeric, years from breast height)
 #'
 #' @returns a data.frame with biomass expansion factors for estimating dry mass of

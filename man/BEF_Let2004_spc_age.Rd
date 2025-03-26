@@ -7,7 +7,7 @@
 BEF_Let2004_spc_age(species = c("gran", "furu", "lauv")[1], age = 80)
 }
 \arguments{
-\item{species}{one of {"spruce", "gran", "pine", "furu", "broadleave", "løv", "lauv", "bjørk"}}
+\item{species}{one of ("spruce", "gran", "pine", "furu", "broadleave", "løv", "lauv", "bjørk")}
 
 \item{age}{age of the stand (numeric, years from breast height)}
 }

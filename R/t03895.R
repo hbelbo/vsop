@@ -125,7 +125,7 @@ t03895 <- function(region_level = c("fylker", "kommuner")[1]) { # 1996 - dd
                                   )  %>%
     dplyr::mutate(aar = as.numeric(.data$Tid)) %>%
 
-    dplyr::rename(sortimentkode = Treslag) %>%
+    dplyr::rename(sortimentkode = "Treslag") %>%
     dplyr::mutate(
       treslag = dplyr::case_when(
         stringr::str_detect(.data$sortimentkode, "^1") ~ "Gran",
