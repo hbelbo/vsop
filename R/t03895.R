@@ -142,6 +142,10 @@ t03895 <- function(region_level = c("fylker", "kommuner")[1]) { # 1996 - dd
       )) %>% dplyr::select("region", "sortiment", "aar", regionkode = "Region", "sortimentkode", m3 = "value", "treslag", "sortimentgruppe")
   #  glimpse(pxdt_no)
  pxdt_all <- pxdt_no %>% dplyr::left_join(pxdt_en, by = c("region", "regionkode", "aar", "sortimentkode", "m3"))
+
+ pxdt_all %>% dplyr::group_by(.data$region, .data$regionkode) %>% dplyr::summarise(m3 = sum(.data$m3, na.rm = TRUE)) %>% dplyr::ungroup() %>% dplyr::filter(.data$m3>0) %>%  dplyr::select("region", "regionkode") %>% dplyr::distinct() %>%
+   dplyr::left_join(pxdt_all) %>% dplyr::filter(!stringr::str_starts(.data$sortiment, pattern = "Ved til brensel ")) -> pxdt_all
+
   #pxdt_all %>% filter( stringr::str_sub(.data$sortimentkode, 1,2) %in% c("11", "21", "31")) %>%  filter(.data$m3>0) %>%
   #  filter(stringr::str_detect(region, "Trøndelag" )) %>% pull(.data$aar) %>% table()
 

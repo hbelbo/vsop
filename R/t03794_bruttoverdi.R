@@ -15,7 +15,8 @@
 #' @source \url{https://www.ssb.no/statbank/table/03794/}
 #'
 #' @examples
-#'  t03794()
+#'  t03794(region_level = "kommuner")
+#'  t03794(region_level = "fylker")
 t03794 <- function(region_level = c("fylker", "kommuner")[1]){
 
 

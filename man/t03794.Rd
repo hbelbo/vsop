@@ -24,5 +24,6 @@ Not sure if energywood assortments and wood is included
 https://www.ssb.no/statbank/list/skogav
 }
 \examples{
- t03794()
+ t03794(region_level = "kommuner")
+ t03794(region_level = "fylker")
 }

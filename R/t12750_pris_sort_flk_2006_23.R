@@ -13,38 +13,43 @@
 #'
 #' @examples
 #' prisstat <- t12750()
+#'
 t12750 <- function(){
-  metadt <- PxWebApiData::ApiData("http://data.ssb.no/api/v0/no/table/12750", returnMetaData = TRUE)
-  #regcodes <- unlist(purrr::flatten(metadt[[1]][3]))
-  #fylker <- regcodes[stringr::str_length(regcodes) == 2]
-
-
-  file_path <- system.file("extdata", "agg_single_fylker_20250317.json", package = "vsop")
-  # Check if the file exists
-  if (file.exists(file_path)) {
-    # Read the JSON file into a variable
-    region_agg_ <- jsonlite::fromJSON(file_path)
-  } else {
-    stop("File 'agg_single_fylker_yyyymmdd.json' not found: ", file_path)
-  }
-
-
-  region_category_ <- region_agg_$dimension$Region$category$label
-  region_index_ <- region_agg_$dimension$Region$category$index
-
-  region_df_ <- data.frame(
-    Category = names(region_category_),
-    Label = unlist(region_category_),
-    Index = unlist(region_index_[names(region_category_)])
-  )
-
+  # metadt <- PxWebApiData::ApiData("http://data.ssb.no/api/v0/no/table/12750", returnMetaData = TRUE)
+  # #regcodes <- unlist(purrr::flatten(metadt[[1]][3]))
+  # #fylker <- regcodes[stringr::str_length(regcodes) == 2]
+  #
+  #
+  # #file_path <- system.file("extdata", "agg_single_fylker_20250317.json", package = "vsop")
+  # # Check if the file exists
+  # if (file.exists(file_path)) {
+  #   # Read the JSON file into a variable
+  #   region_agg_ <- jsonlite::fromJSON(file_path)
+  # } else {
+  #   stop("File 'agg_single_fylker_yyyymmdd.json' not found: ", file_path)
+  # }
+  #
+  #
+  # region_category_ <- region_agg_$dimension$Region$category$label
+  # region_index_ <- region_agg_$dimension$Region$category$index
+  #
+  # region_df_ <- data.frame(
+  #   Category = names(region_category_),
+  #   Label = unlist(region_category_),
+  #   Index = unlist(region_index_[names(region_category_)])
+  # )
+  #
+  file_path <- system.file("extdata", "ssbapi_table_12750_filter_FylkerAlle.json", package = "vsop")
+  qry <- jsonlite::fromJSON(file_path)
+  regionkoder <- qry$queryObj$query$selection$values[[1]]
 
   pxdt <- PxWebApiData::ApiData("http://data.ssb.no/api/v0/no/table/12750" , #returnMetaFrames = T)
                                 # Gjennomsnittspris, etter sortiment (kr per m3) (F)
                                 # tidsserie 2006 - 2019
                                 # NB: 0 betyr NULL
                                 #Region = list("agg:KommFylker", region_df$Category),
-                                Region = list("agg_single:FylkerGjeldende", region_df_$Category),
+                                #Region = list("agg_single:FylkerGjeldende", region_df_$Category),
+                                Region = list("vs:FylkerAlle", regionkoder),
                                 #Region = fylker,
                                 #ContentsCode = T,
                                 Tid = T,
@@ -77,7 +82,7 @@ t12750 <- function(){
         TRUE ~ "annet"
       ),
       aar = as.integer(.data$Tid)
-    )
+    ) %>% dplyr::select("region_kode", "region", "aar", "treslag", "virkeskategori", "sortimentgruppe", "pris", "kategoritekst")
   return(priser)
 }
 

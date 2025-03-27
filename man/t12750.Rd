@@ -27,4 +27,5 @@ https://www.ssb.no/statbank/list/skogav
 \examples{
 prisstat <- t12750()
 prisstat <- t12750()
+
 }
