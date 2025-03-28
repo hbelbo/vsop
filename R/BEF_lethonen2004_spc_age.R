@@ -52,9 +52,9 @@ BEF_Let2004_spc_age <- function(species , age ){
     Branchesbm = 0.1011 + 0.0180 * agef
     Branchesdbm = 0.0053 + 0.0059 * agef
     Barkbm = 0.0588 + 0.0221 * agef
-    Stumpbm = NA_real_
-    RootsCbm = NA_real_
-    RootsSbm = NA_real_
+    Stumpbm = 0.08 # guesstimate based on Lethonen etal Discussion chapter forth paragraph birch can be expected to be 0.19 for stump&rooot system
+    RootsCbm = 0.07
+    RootsSbm = 0.04
     Totalbm = NA_real_
     Total_abvgbm = 0.05616 + -0.0179 * agef
   }
