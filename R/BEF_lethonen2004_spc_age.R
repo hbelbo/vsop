@@ -3,7 +3,7 @@
 
 #' Biomass expansion factors according to Lethonen etal 2004
 #'
-#' @param species one of: "spruce", "gran", "pine", "furu", "broadleave", "løv", "lauv", "bjørk"
+#' @param species one of: "spruce", "gran", "pine", "furu", "birch", "broadleave", "løv", "lauv", "bjørk"
 #' @param age age of the stand (numeric, years from breast height)
 #'
 #' @returns a data.frame with biomass expansion factors for estimating dry mass of
@@ -19,7 +19,7 @@ BEF_Let2004_spc_age <- function(species , age ){
   # Forest Ecology and Management 188 (2004) 211–224
   # https://doi.org/10.1016/j.foreco.2003.07.008
 
-  stopifnot( tolower(species) %in% c("gran", "spruce", "furu", "pine", "broadleave", "løv", "lauv", "bjørk", "deciduous"))
+  stopifnot( tolower(species) %in% c("gran", "spruce", "furu", "pine", "birch", "bjørk", "broadleave", "løv", "lauv", "deciduous"))
   stopifnot(is.numeric(age) & age > 1 & age < 250)
   agef = exp(-age/100)
   if(tolower(species) %in% c("spruce", "gran")) {
