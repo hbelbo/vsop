@@ -13,12 +13,14 @@
 #'
 #' @examples
 #' BEF_Let2004_spc_age(species = "pine", age = 70)
-BEF_Let2004_spc_age <- function(species = c("gran", "furu", "lauv")[1], age = 80){
+BEF_Let2004_spc_age <- function(species , age ){
   # based on Biomass expansion factors (BEFs) for Scots pine, Norway spruce
   # and birch according to stand age for boreal forests
   # Forest Ecology and Management 188 (2004) 211–224
   # https://doi.org/10.1016/j.foreco.2003.07.008
 
+  stopifnot( tolower(species) %in% c("gran", "spruce", "furu", "pine", "broadleave", "løv", "lauv", "bjørk", "deciduous"))
+  stopifnot(is.numeric(age) & age > 1 & age < 250)
   agef = exp(-age/100)
   if(tolower(species) %in% c("spruce", "gran")) {
 
@@ -43,8 +45,8 @@ BEF_Let2004_spc_age <- function(species = c("gran", "furu", "lauv")[1], age = 80
     RootsCbm = 0.0838 + -0.0365 * agef
     RootsSbm = 0.0272 + 0.0269 * agef
     Totalbm = 0.7018 + 0.0058 * agef
-    Total_abvgbm = 0.05436 + 0.0193 * agef
-  } else if(tolower(species) %in% c("broadleave", "løv", "lauv", "bjørk") ){
+    Total_abvgbm = 0.5436 + 0.0193 * agef
+  } else if(tolower(species) %in% c("broadleave", "løv", "lauv", "bjørk", "deciduous") ){
     Stembm = 0.3964 + -0.0186 * agef
     Foliagebm = NA_real_ # 0. + 0.0
     Branchesbm = 0.1011 + 0.0180 * agef
@@ -57,6 +59,6 @@ BEF_Let2004_spc_age <- function(species = c("gran", "furu", "lauv")[1], age = 80
     Total_abvgbm = 0.05616 + -0.0179 * agef
   }
 
-  return(data.frame(spc_age = paste0(species, age), Stembm, Foliagebm, Branchesbm, Branchesdbm, Barkbm, Stumpbm, RootsCbm, RootsSbm, Totalbm, Total_abvgbm))
+  return(data.frame(spc_age = paste0(species, age), Stembm = Stembm, Foliagebm, Branchesbm, Branchesdbm, Barkbm, Stumpbm, RootsCbm, RootsSbm, Totalbm, Total_abvgbm))
 
 }

@@ -4,7 +4,7 @@
 \alias{BEF_Let2004_spc_age}
 \title{Biomass expansion factors according to Lethonen etal 2004}
 \usage{
-BEF_Let2004_spc_age(species = c("gran", "furu", "lauv")[1], age = 80)
+BEF_Let2004_spc_age(species, age)
 }
 \arguments{
 \item{species}{one of: "spruce", "gran", "pine", "furu", "broadleave", "løv", "lauv", "bjørk"}
