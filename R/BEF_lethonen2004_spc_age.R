@@ -46,7 +46,7 @@ BEF_Let2004_spc_age <- function(species , age ){
     RootsSbm = 0.0272 + 0.0269 * agef
     Totalbm = 0.7018 + 0.0058 * agef
     Total_abvgbm = 0.5436 + 0.0193 * agef
-  } else if(tolower(species) %in% c("broadleave", "løv", "lauv", "bjørk", "deciduous") ){
+  } else if(tolower(species) %in% c("bjørk", "birch", "broadleave", "løv", "lauv",  "deciduous") ){
     Stembm = 0.3964 + -0.0186 * agef
     Foliagebm = NA_real_ # 0. + 0.0
     Branchesbm = 0.1011 + 0.0180 * agef
