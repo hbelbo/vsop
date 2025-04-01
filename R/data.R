@@ -130,30 +130,6 @@
 
 
 
-#' @title volum og priser per kommune, treslag, sortiment, år fra 2014
-#'
-#' @description Data fra Landbruksdirektoratets hogststatistikk
-#'
-#' @format tibble med om lag 1300 obs og 10 variabler
-#' \describe{
-#'   \item{reg_n202x}{Regionnavn pr dagens årstall chr "Agder", "Agder" }
-#'   \item{reg_k202x}{Regionkode pr dagens årstall chr "42", "42" }
-#'   \item{aar}{årstall; num  2014 2014 2014 ...}
-#'   \item{sortkode}{Sortimentkode : chr "01" "01" "01" ...}
-#'   \item{sortiment}{Sortimentnavn: chr "Sagtømmer" "Sagtømmer" ... }
-#'   \item{virkesgrp}{Virkesgruppe; chr "1-Gran" "1-Gran" "2-Furu" "3-Lauv" "5-Ved" ... }
-#'   \item{virkeskat}{Virkeskat; chr "1140" "1148" "1410" ... }
-#'   \item{kategoritekst}{Kategoritekst; chr "Gran sagtømmer sams" "Gran annet sagtømmer" "Gran massevirke" ... }
-#'   \item{totalvolum}{m3; num 3440 14215 ...}
-#'   \item{totalverdi}{kr; num 1599470 6898324 703000 ...}
-#'   \item{m3pris}{kr pr m3; num 465 485 263 398 3 ...}
-#'   \item{region_kode}{kode; chr 09, 10 09, 10 09, 10 09,  ...}
-#' }
-"avvirk_fylke_ldir"
-
-
-
-
 
 #' @title volum og priser per kommune, treslag, sortiment, år fra 2014
 #'
@@ -176,6 +152,30 @@
 #' }
 "avvirk_kmn_ldir"
 
+
+
+#' @title volum og priser per kommune, treslag, sortiment, år fra 2014
+#'
+#' @description Data fra Landbruksdirektoratets hogststatistikk
+#'
+#' @format tibble med om lag 20k obs og 13 variabler
+#' \describe{
+#'   \item{reg_n202x}{Regionnavn pr dagens årstall chr "Hattfjelldal", "Hattfjelldal" }
+#'   \item{reg_k202x}{Regionkode pr dagens årstall chr "1826", "1826" }
+#'   \item{aar}{årstall antatt hogst; num  2014 2014 2014 ...}
+#'   \item{sortkode}{Sortimentkode : chr "01" "01" "01" ...}
+#'   \item{sortiment}{Sortimentnavn: chr "Sagtømmer" "Sagtømmer" ... }
+#'   \item{virkesgrp}{Virkesgruppe; chr "1-Gran" "1-Gran" "2-Furu" "3-Lauv" "5-Ved" ... }
+#'   \item{virkeskat}{Virkeskat; chr "1140" "1148" "1410" ... }
+#'   \item{kategoritekst}{Kategoritekst; chr "Gran sagtømmer sams" "Gran annet sagtømmer" "Gran massevirke" ... }
+#'   \item{totalvolum}{m3; num 3440 14215 ...}
+#'   \item{totalverdi}{kr; num 1599470 6898324 703000 ...}
+#'   \item{m3pris}{kr pr m3; num 465 485 263 398 3 ...}
+#'   \item{region_kode}{region-kode ved registreringstidspunkt; chr 1826, 1826, 1826, 1826,  ...}
+#'   \item{fylke_k2025}{kode; chr 18, 18, 18, 18,  ...}
+#'   \item{fylke_n2024}{Fylkesnavn pr 2024; chr "Nordland", "Nordland", "Nordland", ...}
+#' }
+"avvirk_kmn_ldir_regkorigert"
 
 
 

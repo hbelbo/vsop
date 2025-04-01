@@ -26,6 +26,7 @@ regnavn.at.ref.yr <- function(regionstat, ref.yr = lubridate::year(lubridate::no
   #    regionstat = t12750() #for testing
   #    regionstat = t03895(region_level = "kommune") #for testing
   #   regionstat = t03794()
+  # regionstat = avvirk_kmn_ldir %>% mutate(region_kode = komnr, aar = avvirkaar)
 
   # Fetch the relevant region reference table regref
   if (nchar(regionstat$region_kode[1]) == 2) {
@@ -33,6 +34,7 @@ regnavn.at.ref.yr <- function(regionstat, ref.yr = lubridate::year(lubridate::no
   } else {
     regref <- vsop::regref_kommune_l #regref_kommune_l is a table created in the DATASET script saved in the "data" directory
   }
+  # str(regref)
   regref <- regref %>% mutate(yfrom = as.integer(.data$yfrom), yto = as.integer(.data$yto))
 
   # harmonizing
@@ -75,14 +77,26 @@ regnavn.at.ref.yr <- function(regionstat, ref.yr = lubridate::year(lubridate::no
        }
        return(rrr)
      }))  %>%
-   dplyr::filter( !is.na(.data$regrefrow)) %>%
+   dplyr::filter( !is.na(.data$regrefrow))
 
-    #   Then we have index needed to pick the right row
-    #      to populate both reg_k@ref.yr and reg_n@ref.yr
-    dplyr::mutate(
+# glimpse(regref)
+# glimpse(regionstat)
+ if("reg_name_to" %in% names(regref)){
+      #      to populate both reg_k@ref.yr and reg_n@ref.yr
+    regionstat <- regionstat %>%  dplyr::mutate(
                   !!rlang::sym(paste0("reg_n", ref.yr)) := regref$reg_name_to[(.data$regrefrow)],
                   !!rlang::sym(paste0("reg_k", ref.yr)) := regref$reg_code_to[(.data$regrefrow)]
     )
+ } else {
+   regionstat <- regionstat %>%  dplyr::mutate(
+     !!rlang::sym(paste0("reg_n", ref.yr)) := regref$name[(.data$regrefrow)],
+     !!rlang::sym(paste0("reg_k", ref.yr)) := regref$reg_code_to[(.data$regrefrow)]
+   )
+ }
+
+
+    #   Then we have index needed to pick the right row
+
 
 
 
