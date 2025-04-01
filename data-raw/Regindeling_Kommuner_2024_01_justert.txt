@@ -1,0 +1,237 @@
+januar 2023	januar 2024
+1507 - Ålesund	
+1508 - Ålesund
+1534 - Haram	
+1580 - Haram
+1833 - Rana	
+1833 - Rana - Raane
+1845 - Sørfold	
+1845 - Sørfold - Fuolldá
+3001 - Halden	
+3101 - Halden
+3002 - Moss	
+3103 - Moss
+3003 - Sarpsborg	
+3105 - Sarpsborg
+3004 - Fredrikstad	
+3107 - Fredrikstad
+3005 - Drammen	
+3301 - Drammen
+3006 - Kongsberg	
+3303 - Kongsberg
+3007 - Ringerike	
+3305 - Ringerike
+3011 - Hvaler	
+3110 - Hvaler
+3012 - Aremark	
+3124 - Aremark
+3013 - Marker	
+3122 - Marker
+3014 - Indre Østfold	
+3118 - Indre Østfold
+3015 - Skiptvet	
+3116 - Skiptvet
+3016 - Rakkestad	
+3120 - Rakkestad
+3017 - Råde	
+3112 - Råde
+3018 - Våler (Viken)	
+3114 - Våler (Østfold)
+3019 - Vestby	
+3216 - Vestby
+3020 - Nordre Follo	
+3207 - Nordre Follo
+3021 - Ås	
+3218 - Ås
+3022 - Frogn	
+3214 - Frogn
+3023 - Nesodden	
+3212 - Nesodden
+3024 - Bærum	
+3201 - Bærum
+3025 - Asker	
+3203 - Asker
+3026 - Aurskog-Høland	
+3226 - Aurskog-Høland
+3027 - Rælingen	
+3224 - Rælingen
+3028 - Enebakk	
+3220 - Enebakk
+3029 - Lørenskog	
+3222 - Lørenskog
+3030 - Lillestrøm	
+3205 - Lillestrøm
+3031 - Nittedal	
+3232 - Nittedal
+3032 - Gjerdrum	
+3230 - Gjerdrum
+3033 - Ullensaker	
+3209 - Ullensaker
+3034 - Nes	
+3228 - Nes
+3035 - Eidsvoll	
+3240 - Eidsvoll
+3036 - Nannestad	
+3238 - Nannestad
+3037 - Hurdal	
+3242 - Hurdal
+3038 - Hole	
+3310 - Hole
+3039 - Flå	
+3320 - Flå
+3040 - Nesbyen	
+3322 - Nesbyen
+3041 - Gol	
+3324 - Gol
+3042 - Hemsedal	
+3326 - Hemsedal
+3043 - Ål	
+3328 - Ål
+3044 - Hol	
+3330 - Hol
+3045 - Sigdal	
+3332 - Sigdal
+3046 - Krødsherad	
+3318 - Krødsherad
+3047 - Modum	
+3316 - Modum
+3048 - Øvre Eiker	
+3314 - Øvre Eiker
+3049 - Lier	
+3312 - Lier
+3050 - Flesberg	
+3334 - Flesberg
+3051 - Rollag	
+3336 - Rollag
+3052 - Nore og Uvdal	
+3338 - Nore og Uvdal
+3053 - Jevnaker	
+3236 - Jevnaker
+3054 - Lunner	
+3234 - Lunner
+3801 - Horten	
+3901 - Horten
+3802 - Holmestrand	
+3903 - Holmestrand
+3803 - Tønsberg	
+3905 - Tønsberg
+3804 - Sandefjord	
+3907 - Sandefjord
+3805 - Larvik	
+3909 - Larvik
+3806 - Porsgrunn	
+4001 - Porsgrunn
+3807 - Skien	
+4003 - Skien
+3808 - Notodden	
+4005 - Notodden
+3811 - Færder	
+3911 - Færder
+3812 - Siljan	
+4010 - Siljan
+3813 - Bamble	
+4012 - Bamble
+3814 - Kragerø	
+4014 - Kragerø
+3815 - Drangedal	
+4016 - Drangedal
+3816 - Nome	
+4018 - Nome
+3817 - Midt-Telemark	
+4020 - Midt-Telemark
+3818 - Tinn	
+4026 - Tinn
+3819 - Hjartdal	
+4024 - Hjartdal
+3820 - Seljord	
+4022 - Seljord
+3821 - Kviteseid	
+4028 - Kviteseid
+3822 - Nissedal	
+4030 - Nissedal
+3823 - Fyresdal	
+4032 - Fyresdal
+3824 - Tokke	
+4034 - Tokke
+3825 - Vinje	
+4036 - Vinje
+5037 - Levanger	
+5037 - Levanger - Levangke
+5401 - Tromsø	
+5501 - Tromsø
+5402 - Harstad - Hárstták	
+5503 - Harstad - Hárstták
+5403 - Alta	
+5601 - Alta
+5404 - Vardø	
+5634 - Vardø
+5405 - Vadsø	
+5607 - Vadsø
+5406 - Hammerfest - Hámmerfeasta	
+5603 - Hammerfest - Hámmerfeasta
+5411 - Kvæfjord	
+5510 - Kvæfjord
+5412 - Dielddanuorri - Tjeldsund	
+5512 - Dielddanuorri - Tjeldsund
+5413 - Ibestad	
+5514 - Ibestad
+5414 - Gratangen	
+5516 - Gratangen - Rivtták
+5415 - Loabák - Lavangen	
+5518 - Loabák - Lavangen
+5416 - Bardu	
+5520 - Bardu
+5417 - Salangen	
+5522 - Salangen
+5418 - Målselv	
+5524 - Målselv
+5419 - Sørreisa	
+5526 - Sørreisa
+5420 - Dyrøy	
+5528 - Dyrøy
+5421 - Senja	
+5530 - Senja
+5422 - Balsfjord	
+5532 - Balsfjord
+5423 - Karlsøy	
+5534 - Karlsøy
+5424 - Lyngen	
+5536 - Lyngen
+5425 - Storfjord - Omasvuotna - Omasvuono	
+5538 - Storfjord - Omasvuotna - Omasvuono
+5426 - Gáivuotna - Kåfjord - Kaivuono	
+5540 - Gáivuotna - Kåfjord - Kaivuono
+5427 - Skjervøy	
+5542 - Skjervøy
+5428 - Nordreisa - Ráisa - Raisi	
+5544 - Nordreisa - Ráisa - Raisi
+5429 - Kvænangen	
+5546 - Kvænangen
+5430 - Guovdageaidnu - Kautokeino	
+5612 - Guovdageaidnu - Kautokeino
+5432 - Loppa	
+5614 - Loppa
+5433 - Hasvik	
+5616 - Hasvik
+5434 - Måsøy	
+5618 - Måsøy
+5435 - Nordkapp	
+5620 - Nordkapp
+5436 - Porsanger - Porsángu - Porsanki	
+5622 - Porsanger - Porsángu - Porsanki
+5437 - Kárášjohka - Karasjok	
+5610 - Kárášjohka - Karasjok
+5438 - Lebesby	
+5624 - Lebesby
+5439 - Gamvik	
+5626 - Gamvik
+5440 - Berlevåg	
+5630 - Berlevåg
+5441 - Deatnu - Tana	
+5628 - Deatnu - Tana
+5442 - Unjárga - Nesseby	
+5636 - Unjárga - Nesseby
+5443 - Båtsfjord	
+5632 - Båtsfjord
+5444 - Sør-Varanger	
+5605 - Sør-Varanger

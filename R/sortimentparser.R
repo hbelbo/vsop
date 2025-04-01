@@ -26,13 +26,13 @@ sortimentparser <- function(tbbl){
       TRUE ~ sortiment)
   ) %>%
     dplyr::mutate(
-      Species = dplyr::case_when(treslag == "Gran" ~ "Spruce",
+      species = dplyr::case_when(treslag == "Gran" ~ "Spruce",
                           treslag == "Furu" ~ "Pine",
                           treslag == "Lauv" ~ "Broadleave",
                           treslag == "Bar" ~ "Conifer",
                           treslag == "Annet" ~ "Other",
                           TRUE ~ treslag),
-      Assortment = dplyr::case_when(grovsortiment == "Skurtømmer" ~ "Sawlogs",
+      assortment = dplyr::case_when(grovsortiment == "Skurtømmer" ~ "Sawlogs",
                              grovsortiment == "Massevirke" ~ "Pulpwood",
                              grovsortiment == "Sams" ~ "Mix",
                              grovsortiment ==  "Ved til brensel bar"~ "Conifer Woodfuel",

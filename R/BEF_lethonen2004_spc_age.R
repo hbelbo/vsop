@@ -7,8 +7,10 @@
 #' @param age age of the stand (numeric, years from breast height)
 #'
 #' @returns a data.frame with biomass expansion factors for estimating dry mass of
-#' tree parts like stem, branches etc, in tonne per m3 stem volume
-#' (likely total stump to top stem volume) (også kalt skogskubikmeter)
+#' tree parts like stem, branches etc, in tonne per m3 stem volume on bark
+#' Lethonen etal estimated biomass for each tree part as by Marklund 1988,
+#' and stemvolume on bark by Laasasenaho 1982, and then made BEF functions out of these.
+#' I.e. the BEFS here estimates the biomass for each tree part by total stem volume on bark.
 #' @export
 #'
 #' @examples

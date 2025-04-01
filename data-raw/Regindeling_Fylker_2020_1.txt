@@ -1,5 +1,5 @@
 januar 2018	januar 2020
-01 - Østfold	
+01 - Ã˜stfold	
 30 - Viken
 02 - Akershus	
 30 - Viken
@@ -22,6 +22,6 @@ januar 2018	januar 2020
 14 - Sogn og Fjordane	
 46 - Vestland
 19 - Troms Romsa	
-54 - Troms og Finnmark Romsa ja Finnmárku
-20 - Finnmark Finnmárku	
-54 - Troms og Finnmark Romsa ja Finnmárku
+54 - Troms og Finnmark Romsa ja FinnmÃ¡rku
+20 - Finnmark FinnmÃ¡rku	
+54 - Troms og Finnmark Romsa ja FinnmÃ¡rku

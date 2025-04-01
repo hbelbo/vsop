@@ -471,8 +471,6 @@ januar 2019	januar 2020
 1578 - Fjord
 1529 - Skodje	
 1507 - Ålesund
-1534 - Haram	
-1507 - Ålesund
 1543 - Nesset	
 1506 - Molde
 1545 - Midsund	

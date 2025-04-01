@@ -7,7 +7,7 @@ region_at_time_txtfls <- function(filename){
   #Fylker: https://www.ssb.no/en/klass/klassifikasjoner/104/versjon/1158/koder
   #Kommuner: https://www.ssb.no/en/klass/klassifikasjoner/131
 
-  #   filename = files[1] filename = files[2]
+  #   filename = files[1] filename = files[5] filename = files[17]
   #readr::guess_encoding(filename)
   datastring <- readLines(filename, n=-1L,
                          encoding =  dplyr::pull(readr::guess_encoding(filename)[1,1]),
@@ -112,8 +112,10 @@ regupdated = function(files){
   regiondef = region_at_time_txtfls(filename = files[1])
 
   for (i in 2:length(files)){
-    print(i)
+    # i = 17
+    print(paste0("file: ", files[i], "\n"))
     regupdate = region_at_time_txtfls(filename = files[i])
+    print(regupdate)
     ## !! coming left_join: It would be best to find a way to join only by the "reg_code_x" variables but I could not find how to type this :-(
     both = dplyr::left_join(regiondef, regupdate)
     head(both)
@@ -132,6 +134,7 @@ regupdated = function(files){
                         TRUE ~ !!dplyr::sym(regupnames[regupnamesl-2]))
       )  -> regiondef
   }
+  #regiondef[,c(1,2,20:34)]
   return(regiondef)
 }
 
@@ -233,36 +236,6 @@ kpi_t03014 <-
 
 
 
-# m3_sortiment_kmn based on ssb t03895 ----
-m3_sortiment_kmn <-
-  regnavn.at.ref.yr( regionstat = t03895(region_level = "kommune") ) %>%
-  dplyr::select( -regrefrow)
-
-# m3_sortiment_flk based on ssb t03895 ----
-m3_sortiment_flk <-
-  regnavn.at.ref.yr( regionstat = t03895(region_level = "fylke") ) %>%
-  dplyr::select( -regrefrow)
-
-# virkesverdi_kmn based on ssb t03794 ----
-virkesverdi_kmn <-
-  regnavn.at.ref.yr(
-    regionstat = t03794( region_level = "kommune")) %>%
-  dplyr::select( -regrefrow)
-
-# virkesverdi_flk based on ssb t03794 ----
-virkesverdi_flk <-
-  regnavn.at.ref.yr(
-    regionstat = t03794( region_level = "fylke")) %>%
-  dplyr::select( -regrefrow)
-
-# sortimentpriser_flk based on ssb t12750 ----
-sortimentpriser_flk <-
-  regnavn.at.ref.yr(
-    regionstat = t12750()) %>%
-    dplyr::select( -regrefrow) %>%
-  dplyr::group_by(reg_n2021, reg_k2021, aar, sortimentgruppe, treslag) %>%
-  dplyr::summarise(pris = mean(pris))
-
 
 
 # # hogst volum verdi data fra landbruksdirektoratets excel-filer ----
@@ -335,11 +308,6 @@ sortimentpriser_flk <-
 
 # include the datasets in the package: usethis::use_data ----
 usethis::use_data(
-  m3_sortiment_kmn,
-  m3_sortiment_flk,
-  virkesverdi_kmn,
-  virkesverdi_flk,
-  sortimentpriser_flk,
   regref_kommune,
   regref_fylke,
   regref_kommune_l,
