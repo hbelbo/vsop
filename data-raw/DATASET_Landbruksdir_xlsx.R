@@ -56,8 +56,7 @@ ld_avvirk_kommune <- function(){
 
 avvirk_kmn_ldir <- ld_avvirk_kommune()
 
-avvirk_kmn_ldir_regkorigert <-  regnavn.at.ref.yr(avvirk_kmn_ldir %>% dplyr::mutate(region_kode = komnr, aar = avvirkaar))
-avvirk_kmn_ldir_regkorigert2 <- avvirk_kmn_ldir_regkorigert %>%
+avvirk_kmn_ldir_regkorigert <-  regnavn.at.ref.yr(avvirk_kmn_ldir %>% dplyr::mutate(region_kode = komnr, aar = avvirkaar)) %>%
   dplyr::group_by_at(vars(starts_with("reg_"), aar, sortkode, sortiment, virkesgrp, virkeskat, kategoritekst)) %>%
   dplyr::summarise(totalvolum = sum(totalvolum, na_rm = TRUE),
                    totalverdi = sum(totalverdi, na_rm = TRUE),
@@ -65,13 +64,13 @@ avvirk_kmn_ldir_regkorigert2 <- avvirk_kmn_ldir_regkorigert %>%
                    region_kode = paste0(unique(region_kode), collapse = ", ")) %>%
   dplyr::ungroup() %>%
   mutate(fylke_k2025 = substring(reg_k2025, first = 1, last = 2)) %>% left_join(Fylkeskoder, by = c("fylke_k2025" = "Fylke_k2024"))
-# head(avvirk_kmn_ldir_regkorigert2)
-# avvirk_kmn_ldir_regkorigert2 %>% select(reg_n2025, reg_k2025, region_kode, fylke_k2025, Fylke_n2024) %>% distinct() %>% print(n = 20)
+# head(avvirk_kmn_ldir_regkorigert)
+# avvirk_kmn_ldir_regkorigert %>% select(reg_n2025, reg_k2025, region_kode, fylke_k2025, Fylke_n2024) %>% distinct() %>% print(n = 20)
 
-unique(avvirk_kmn_ldir_regkorigert2$reg_n2025)
-unique(avvirk_kmn_ldir_regkorigert2$reg_k2025)
+unique(avvirk_kmn_ldir_regkorigert$reg_n2025)
+unique(avvirk_kmn_ldir_regkorigert$reg_k2025)
 usethis::use_data(avvirk_kmn_ldir, overwrite = T, version = 3)
-usethis::use_data(avvirk_kmn_ldir_regkorigert2, overwrite = T, version = 3)
+usethis::use_data(avvirk_kmn_ldir_regkorigert, overwrite = T, version = 3)
 
 
 
