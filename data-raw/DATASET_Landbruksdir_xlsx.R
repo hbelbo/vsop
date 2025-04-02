@@ -45,6 +45,7 @@ ld_avvirk_kommune <- function(){
 
     df <- rbind(df, readxl::read_xlsx(path = files[i], sheet = 1, skip = 2, col_names = T, col_types = "text"))
   }
+  df %>% filter(stringr::str_detect(string = KATEGORITEKST, pattern = "sams"))
   df <- df %>%
     dplyr::rename_with(tolower) %>%
     dplyr::mutate(
@@ -71,7 +72,8 @@ avvirk_kmn_ldir_regkorigert <-  regnavn.at.ref.yr(avvirk_kmn_ldir %>% dplyr::mut
 # head(avvirk_kmn_ldir_regkorigert)
 # avvirk_kmn_ldir_regkorigert %>% select(reg_n2025, reg_k2025, region_kode, fylke_k2025, Fylke_n2024) %>% distinct() %>% print(n = 20)
 
-avvirk_kmn_ldir_regkorigert %>% filter(is.na(Fylke_n2024)) %>% head()
+avvirk_kmn_ldir_regkorigert %>% head()
+sortimentparser_vsop(avvirk_kmn_ldir_regkorigert)
 unique(avvirk_kmn_ldir_regkorigert$reg_n2025)
 unique(avvirk_kmn_ldir_regkorigert$reg_k2025)
 usethis::use_data(avvirk_kmn_ldir, overwrite = T, version = 3)
