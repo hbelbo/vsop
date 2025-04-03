@@ -48,7 +48,7 @@ sortimentparser <- function(tbbl){
 
 #' Sortimentparser_vsop
 #'
-#' @param tbbl a tibble having the variables  "ortiment" and "
+#' @param tbbl a tibble having the variables  "virkesgrp" and "kategoritekst" and "virkeskat"
 #'
 #' @returns a tibble
 #' @export
